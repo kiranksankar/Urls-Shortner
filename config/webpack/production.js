@@ -6,7 +6,7 @@ module.exports = environment.toWebpackConfig()
 module.exports = {
     mode: 'production',
     entry: {
-      main: 'packs', 
+      main: './app/javascript/packs/application.js', 
       // Example single entry point
       // If you have multiple entry points, you can define them like this:
     //   admin: './src/admin.js',
