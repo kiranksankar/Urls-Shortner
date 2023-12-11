@@ -1,0 +1,13 @@
+
+<% if flash[:register_error].present? %> 
+<br>
+  <div class="alert fade show">
+    <p style="color:red;">
+      <% flash[:register_error].each_with_index do |error, index| %>
+        <%= error %> <%= index < flash[:register_error].size - 1 ? ', ' : '' %>
+      <% end %>
+    </p>
+  </div>
+<% end %>
+
+

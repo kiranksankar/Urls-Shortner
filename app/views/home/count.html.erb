@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shortened URL Count</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('<%= asset_path('pexels-photo-1365795.jpeg') %>');
+      background-size:cover; 
+      background-position: center center;
+      background-attachment: fixed; 
+      margin: 0;
+      font-family: Arial, sans-serif;
+  
+    }
+
+    
+.container {
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 15%;
+  max-width: 600px;
+  color: black;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+
+.container:hover {
+  color: red;
+  /* animation: glowing 1s infinite;  */
+}
+
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 10px red;
+  }
+  50% {
+    box-shadow: 0 0 20px yellow; /
+  }
+  100% {
+    box-shadow: 0 0 10px green;
+  }
+}
+
+    h1 {
+      color: white;
+      font-size:50px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .count-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .count {
+      font-size: 48px;
+      color: #007bff;
+      margin-bottom: 10px;
+      
+    }
+
+    .count-label {
+      font-size: 20px;
+      color: #7869;
+      font-weight: bold;
+      
+    }
+    .con{
+        color: white;
+        font-family: Arial, sans-serif;
+    }
+    .con:hover{
+        color:red;
+        
+    }
+a {
+  color:black;  
+  
+}
+p{
+  animation: glowing 1s infinite; 
+}
+
+  </style>
+</head>
+<%= render  "urlshortener/navbar"%>
+<body>
+    
+  
+  <div class="container con">
+    <h1>Shortened URL Count</h1>
+
+    <div class="count-section">
+      <div class="count"><p><%= @count %></p></div>
+      <br>
+      <div class="count-label">Total URLs Shortened</div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <a href="/upload">
+  <div class="con">
+     <div class="count-section">
+         <h2>Click here for shortening another url </h2>
+    </div>
+    </div>
+    </a>
+</body>
+</html>

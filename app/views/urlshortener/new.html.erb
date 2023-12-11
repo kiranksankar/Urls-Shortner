@@ -1,0 +1,32 @@
+<% if flash[:error].present? %>
+  <div class="alert fade show" id="error-alert>
+    <% if flash[:error].is_a?(String) %>
+      <div class="form-control">
+        <h4 style="color: red;"><%= flash[:error] %></h4>
+      </div>
+    <% elsif flash[:error].is_a?(Array) %>
+      <% flash[:error].each do |error| %>
+        <div class="form-control">
+          <h4 style="color: red;"><%= error %></h4>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+<script>
+ function removeAlerts() {
+    // Select all alert elements by their IDs and set a timeout
+      var alertElement = document.querySelector('#error-alert');
+      if (alertElement) {
+        setTimeout(function() {
+          alertElement.remove(); 
+        }, 3000); // Adjust the timeout duration in milliseconds (here set to 5000ms or 5 seconds)
+      }
+    };
+  
+
+  // Call the function when the page loads
+  window.addEventListener('load', function() {
+    removeAlerts();
+  });
+  </script>

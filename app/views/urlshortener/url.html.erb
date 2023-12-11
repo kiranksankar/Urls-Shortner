@@ -1,0 +1,10 @@
+<% if flash[:url_error].present? %>
+  <div class="alert fade show" >
+    <% flash[:url_error].each do |error| %>
+     <div class="form-control">
+        <h4 style="color:red;"><%=error %> </h4>
+    </div>
+    <% end %>
+    <% end %>
+   
+  </div>

@@ -1,0 +1,111 @@
+<!-- app/views/urlshortener/display_all_urls.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>summary of urlshortener  </title>
+  <style>
+ 
+.super-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.con{
+  margin:40px 50px;
+}
+.super-table th {
+  border: 1px solid cyan;
+  padding: 20px;
+  text-align: center;
+  color: cyan;
+  
+}
+
+
+.super-table td {
+  border: 1px solid #ddd;
+  padding: 20px;
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center; 
+  /* white-space: nowrap; */
+}
+
+
+.super-table tr{
+  background-color: black;
+  color: white;
+}
+.length{
+  width: 50%;
+}
+  </style>
+</head>
+
+<body>
+  <%= render  "urlshortener/navbar" %>
+ 
+
+ <br>
+    <br>
+  <center>
+  <h1>Summary of all Urls Shortened</h1>
+
+  <div class="length">
+  <hr class="my-4">
+   
+  
+  <%# <%= link_to 'Download Summary Report', downloads_summary_report_path(format: :pdf) %> 
+<%# <p> %>
+  <%# <%= link_to 'Download USER Summary', generate_User_summary_path %>   
+<%# </p> %>
+  <%# <%# </div> %>
+   </center>   
+   </div>
+<div class="con">
+  <div class="btn">
+  <p> If you want to download the PDF of the URLS shortened and original urls : <%= link_to 'click here for download  urls shortened Summary', generate_pdf_summary_path %>
+</div><br>
+<div class="btn">
+  <p> If you want to download the PDF of the All users registered until now : <%= link_to 'click here for download users Summary', generate_User_summary_path %>
+</div>
+ 
+
+  <% if @summary.any? %>
+    <table class="super-table">
+      <thead>
+        <tr>
+          
+          <th><center>Urls count</center></th>
+          <th><center>Original URL</center></th>
+          <th><center>Shortened URL</center></th>
+        
+        </tr>
+
+      </thead>
+      <tbody>
+        <% count = 0%>
+        <% @summary.each do |url| %>
+          <tr>
+            <td><%= count += 1 %></td>
+            <td><%= url.original_url %></td>
+            <td><%= url.shortened_url %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+  <div class="container">
+    <center>
+    <h2>No URLs found.</h2>
+    </centerra>
+    </div>
+
+  <% end %>
+  </div>
+  
+  
+</body>
+</html>

@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shortened URL</title>
+  <style>
+   .url-container {
+      margin-bottom: 20px;
+    }
+    .url-container label {
+      font-weight: bold;
+      color:red;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    }
+    .url-container input{
+      width: 100%;
+      height : 80px;
+      margin-top: 5px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius:10px;
+     
+    }
+    .url-container a {
+      word-break: break-all;
+      display: block;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+<%= render  "urlshortener/navbar" %>
+
+<div class="container">
+  <div class="login-form">
+  <div class="url-container">
+    <label for="originalUrl">Original URL:</label>
+     <% if @latest_url %>
+    <input type="text" id="originalUrl" value= "<%= @latest_url.original_url %>">
+  </div>
+
+  <div class="url-container">
+     <label for="shortUrl">Short URL:</label>
+    <div class="row">
+    <div class="col-10">
+     
+    <input type="text" id="shortUrl" value="<%= @shortened_url %>" > 
+    </div>
+    <div class="col-2">
+          <input class="btn-primary form-control" type="button" value="Copy"onclick="copyText()">
+    </div>
+    </div>
+
+
+
+    <% else %>
+    <p> no URLs found</p>
+    <% end %>
+  </div>
+  <div class="url-container">
+    <%# <div class="col-6">
+    <button class="btn-primary form-control" type="button" onclick="copyText()">Copy</button>
+    </div> %>
+ 
+          <input id ="btnclick"class="btn-primary  form-control" value="Short Next" type="button">
+    </div>
+  
+  </div>
+  </div>
+
+
+<script>
+  document.getElementById('btnclick').addEventListener('click', function() {
+  window.location.href = "/urlshortener"; 
+  });
+
+  function copyText() {
+     
+      var inputField = document.getElementById("shortUrl");
+
+
+      inputField.select();
+      inputField.setSelectionRange(0, 99999); /* For mobile devices */
+
+      document.execCommand("copy");
+      alert("Copied the text: " + inputField.value);}
+</script>
+
+
+<%# <div class="container"> %>
+
+
+
+<!-- show.html.erb  to show the link  -->
+<%# <h1>Latest Stored URL</h1>
+
+<% if @latest_url %>
+  <%# <p><%= link_to @latest_url.original_url, @latest_url.original_url </p> %>
+<%# <% else %>
+  <%# <p>No URL available</p> %>
+<%# <% end %> 
