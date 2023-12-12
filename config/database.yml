@@ -79,6 +79,5 @@ test:
 #
 production:
   <<: *default
-  database: mine_production
-  username: mine
-  password: <%= ENV["MINE_DATABASE_PASSWORD"] %>
+ 
+  url: <%= ENV['DATABASE_URL'] %>
