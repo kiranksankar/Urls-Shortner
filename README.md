@@ -1,2 +1,24 @@
-# Urls-Shortner
- The application allows users to input long URLs, generating unique shortened URLs for redirection purposes. The repository encompasses the logic for URL shortening, redirection handling, database storage for URL mappings, and a user interface.
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
