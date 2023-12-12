@@ -1,5 +1,5 @@
 
-class CreateRegistrations < ActiveRecord::Migration[6.0]
+class CreateRegistrations < ActiveRecord::Migration[7.1]
   def change
     drop_table :registrations
     end
