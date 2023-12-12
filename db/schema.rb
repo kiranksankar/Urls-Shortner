@@ -55,6 +55,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_07_065232) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "registrations", force: :cascade do |t|
+    t.string "Username"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "urls", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
