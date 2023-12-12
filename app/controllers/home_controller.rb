@@ -19,7 +19,7 @@ class HomeController < ApplicationController
       redirect_to '/logins'
     else
       flash[:register_error] = user.errors.full_messages
-      puts(user.errors.full_messages)
+      # puts(user.errors.full_messages)
       redirect_to '/recipie'
     end
 
@@ -33,7 +33,7 @@ class HomeController < ApplicationController
 
   def count
     @count = Url.count
-    puts(@count)
+    # puts(@count)
   end
 
 
