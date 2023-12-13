@@ -2,7 +2,7 @@
 
 default: &default
   source_path: app/javascript
-  source_entry_path: packs
+  source_entry_path: components
   public_root_path: public
   public_output_path: packs
   cache_path: tmp/cache/webpacker
@@ -51,6 +51,7 @@ default: &default
 development:
   <<: *default
   compile: true
+  webpack_compile_output: false  
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:

@@ -6058,13 +6058,13 @@
           var batchedUpdatesImpl = function(fn, bookkeeping) {
             return fn(bookkeeping);
           };
-          var flushSyncImpl = function() {
+          var flushSyncImpl2 = function() {
           };
           var isInsideEventHandler = false;
           function finishEventHandler() {
             var controlledComponentsHavePendingUpdates = needsStateRestore();
             if (controlledComponentsHavePendingUpdates) {
-              flushSyncImpl();
+              flushSyncImpl2();
               restoreStateIfNeeded();
             }
           }
@@ -6082,7 +6082,7 @@
           }
           function setBatchingImplementation(_batchedUpdatesImpl, _discreteUpdatesImpl, _flushSyncImpl) {
             batchedUpdatesImpl = _batchedUpdatesImpl;
-            flushSyncImpl = _flushSyncImpl;
+            flushSyncImpl2 = _flushSyncImpl;
           }
           function isInteractive(tag) {
             return tag === "button" || tag === "input" || tag === "select" || tag === "textarea";
@@ -32311,6 +32311,7 @@
 
   // node_modules/react-router-dom/dist/index.js
   var React2 = __toESM(require_react());
+  var ReactDOM = __toESM(require_react_dom());
 
   // node_modules/react-router/dist/index.js
   var React = __toESM(require_react());
@@ -32895,8 +32896,19 @@
     let isEmptyPath = toArg === "" || to.pathname === "";
     let toPathname = isEmptyPath ? "/" : to.pathname;
     let from;
-    if (isPathRelative || toPathname == null) {
+    if (toPathname == null) {
       from = locationPathname;
+    } else if (isPathRelative) {
+      let fromSegments = routePathnames[routePathnames.length - 1].replace(/^\//, "").split("/");
+      if (toPathname.startsWith("..")) {
+        let toSegments = toPathname.split("/");
+        while (toSegments[0] === "..") {
+          toSegments.shift();
+          fromSegments.pop();
+        }
+        to.pathname = toSegments.join("/");
+      }
+      from = "/" + fromSegments.join("/");
     } else {
       let routePathnameIndex = routePathnames.length - 1;
       if (toPathname.startsWith("..")) {
@@ -33666,6 +33678,8 @@
   }
   var START_TRANSITION2 = "startTransition";
   var startTransitionImpl2 = React2[START_TRANSITION2];
+  var FLUSH_SYNC = "flushSync";
+  var flushSyncImpl = ReactDOM[FLUSH_SYNC];
   function BrowserRouter(_ref4) {
     let {
       basename,
@@ -33826,7 +33840,8 @@
       nextLocationPathname = nextLocationPathname ? nextLocationPathname.toLowerCase() : null;
       toPathname = toPathname.toLowerCase();
     }
-    let isActive = locationPathname === toPathname || !end && locationPathname.startsWith(toPathname) && locationPathname.charAt(toPathname.length) === "/";
+    const endSlashPosition = toPathname !== "/" && toPathname.endsWith("/") ? toPathname.length - 1 : toPathname.length;
+    let isActive = locationPathname === toPathname || !end && locationPathname.startsWith(toPathname) && locationPathname.charAt(endSlashPosition) === "/";
     let isPending = nextLocationPathname != null && (nextLocationPathname === toPathname || !end && nextLocationPathname.startsWith(toPathname) && nextLocationPathname.charAt(toPathname.length) === "/");
     let renderProps = {
       isActive,
@@ -34003,7 +34018,8 @@
           formData,
           body,
           formMethod: options.method || method,
-          formEncType: options.encType || encType
+          formEncType: options.encType || encType,
+          unstable_flushSync: options.unstable_flushSync
         });
       } else {
         router.navigate(options.action || action, {
@@ -34015,6 +34031,7 @@
           replace: options.replace,
           state: options.state,
           fromRouteId: currentRouteId,
+          unstable_flushSync: options.unstable_flushSync,
           unstable_viewTransition: options.unstable_viewTransition
         });
       }
@@ -34036,8 +34053,8 @@
     let location2 = useLocation();
     if (action == null) {
       path.search = location2.search;
-      if (match.route.index) {
-        let params = new URLSearchParams(path.search);
+      let params = new URLSearchParams(path.search);
+      if (params.has("index") && params.get("index") === "") {
         params.delete("index");
         path.search = params.toString() ? "?" + params.toString() : "";
       }
@@ -37261,7 +37278,7 @@ object-assign/index.js:
 
 @remix-run/router/dist/router.js:
   (**
-   * @remix-run/router v1.11.0
+   * @remix-run/router v1.13.1
    *
    * Copyright (c) Remix Software Inc.
    *
@@ -37273,7 +37290,7 @@ object-assign/index.js:
 
 react-router/dist/index.js:
   (**
-   * React Router v6.18.0
+   * React Router v6.20.1
    *
    * Copyright (c) Remix Software Inc.
    *
@@ -37285,7 +37302,7 @@ react-router/dist/index.js:
 
 react-router-dom/dist/index.js:
   (**
-   * React Router DOM v6.18.0
+   * React Router DOM v6.20.1
    *
    * Copyright (c) Remix Software Inc.
    *

@@ -1,0 +1,94 @@
+{
+  "About.js": "/packs/js/About-ad6b1b11c1be89ff3e90.js",
+  "About.js.map": "/packs/js/About-ad6b1b11c1be89ff3e90.js.map",
+  "App.js": "/packs/js/App-22d7bbca8ed1da39b043.js",
+  "App.js.map": "/packs/js/App-22d7bbca8ed1da39b043.js.map",
+  "Home.js": "/packs/js/Home-d86e161dea23470af2c4.js",
+  "Home.js.map": "/packs/js/Home-d86e161dea23470af2c4.js.map",
+  "Logins.js": "/packs/js/Logins-32a73d45fd6b2b4b37c1.js",
+  "Logins.js.map": "/packs/js/Logins-32a73d45fd6b2b4b37c1.js.map",
+  "Navbar.js": "/packs/js/Navbar-975659e6347a34227d21.js",
+  "Navbar.js.map": "/packs/js/Navbar-975659e6347a34227d21.js.map",
+  "Recipie.js": "/packs/js/Recipie-3f284d291620b8b29209.js",
+  "Recipie.js.map": "/packs/js/Recipie-3f284d291620b8b29209.js.map",
+  "Urlshortener.js": "/packs/js/Urlshortener-d3e8c80407cae70c7527.js",
+  "Urlshortener.js.map": "/packs/js/Urlshortener-d3e8c80407cae70c7527.js.map",
+  "entrypoints": {
+    "About": {
+      "js": [
+        "/packs/js/About-ad6b1b11c1be89ff3e90.js"
+      ],
+      "js.map": [
+        "/packs/js/About-ad6b1b11c1be89ff3e90.js.map"
+      ]
+    },
+    "App": {
+      "js": [
+        "/packs/js/App-22d7bbca8ed1da39b043.js"
+      ],
+      "js.map": [
+        "/packs/js/App-22d7bbca8ed1da39b043.js.map"
+      ]
+    },
+    "Home": {
+      "js": [
+        "/packs/js/Home-d86e161dea23470af2c4.js"
+      ],
+      "js.map": [
+        "/packs/js/Home-d86e161dea23470af2c4.js.map"
+      ]
+    },
+    "index": {
+      "js": [
+        "/packs/js/index-f22b358271716b596332.js"
+      ],
+      "js.map": [
+        "/packs/js/index-f22b358271716b596332.js.map"
+      ]
+    },
+    "Logins": {
+      "js": [
+        "/packs/js/Logins-32a73d45fd6b2b4b37c1.js"
+      ],
+      "js.map": [
+        "/packs/js/Logins-32a73d45fd6b2b4b37c1.js.map"
+      ]
+    },
+    "Navbar": {
+      "js": [
+        "/packs/js/Navbar-975659e6347a34227d21.js"
+      ],
+      "js.map": [
+        "/packs/js/Navbar-975659e6347a34227d21.js.map"
+      ]
+    },
+    "navbarlogin": {
+      "js": [
+        "/packs/js/navbarlogin-5fc64a7a45a04d196e36.js"
+      ],
+      "js.map": [
+        "/packs/js/navbarlogin-5fc64a7a45a04d196e36.js.map"
+      ]
+    },
+    "Recipie": {
+      "js": [
+        "/packs/js/Recipie-3f284d291620b8b29209.js"
+      ],
+      "js.map": [
+        "/packs/js/Recipie-3f284d291620b8b29209.js.map"
+      ]
+    },
+    "Urlshortener": {
+      "js": [
+        "/packs/js/Urlshortener-d3e8c80407cae70c7527.js"
+      ],
+      "js.map": [
+        "/packs/js/Urlshortener-d3e8c80407cae70c7527.js.map"
+      ]
+    }
+  },
+  "index.js": "/packs/js/index-f22b358271716b596332.js",
+  "index.js.map": "/packs/js/index-f22b358271716b596332.js.map",
+  "navbarlogin.js": "/packs/js/navbarlogin-5fc64a7a45a04d196e36.js",
+  "navbarlogin.js.map": "/packs/js/navbarlogin-5fc64a7a45a04d196e36.js.map"
+}
