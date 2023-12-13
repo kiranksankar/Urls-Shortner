@@ -42306,7 +42306,7 @@
         name: "login[password]",
         placeholder: "***********"
       }
-    )), /* @__PURE__ */ import_react45.default.createElement("br", null), /* @__PURE__ */ import_react45.default.createElement("input", { type: "checkbox", onChange: togglePassword }), " ", /* @__PURE__ */ import_react45.default.createElement("span", { className: "head" }, " Show Password"), /* @__PURE__ */ import_react45.default.createElement("br", null), /* @__PURE__ */ import_react45.default.createElement("br", null), /* @__PURE__ */ import_react45.default.createElement("center", null, /* @__PURE__ */ import_react45.default.createElement("button", { className: " btn-primary1 form-control", tupe: "submit" }, "Register"))))))));
+    )), /* @__PURE__ */ import_react45.default.createElement("br", null), /* @__PURE__ */ import_react45.default.createElement("input", { type: "checkbox", onChange: togglePassword }), " ", /* @__PURE__ */ import_react45.default.createElement("span", { className: "head" }, " Show Password"), /* @__PURE__ */ import_react45.default.createElement("br", null), /* @__PURE__ */ import_react45.default.createElement("br", null), /* @__PURE__ */ import_react45.default.createElement("center", null, /* @__PURE__ */ import_react45.default.createElement("button", { className: " btn-primary1 form-control", type: "submit" }, "Register"), /* @__PURE__ */ import_react45.default.createElement("div", { className: "create" }, /* @__PURE__ */ import_react45.default.createElement(Link, { to: "/recipie" }, /* @__PURE__ */ import_react45.default.createElement("h5", { className: "head" }, "Create a New account ? "))))))))));
   };
   var Logins_default = Logins;
   {
