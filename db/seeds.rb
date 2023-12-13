@@ -14,3 +14,6 @@
     email: "example@gmail.com ",
     password: "kiranks1234"
   )
+  Url.create(
+    original_url:  "https://shorturl-oazb.onrender.com/",
+  )
