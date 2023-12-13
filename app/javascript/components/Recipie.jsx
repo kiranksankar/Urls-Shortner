@@ -32,7 +32,7 @@ function Recipie() {
       <div className="col-sm-4">
         <form method="POST" action="/users">
         <div className="row">
-              <div className="col-6">
+              <div >
         <input
             className="form-control log"
             type="text"
@@ -40,7 +40,7 @@ function Recipie() {
             placeholder="Enter the Username"
           />
           </div>
-              <div className="col-6">
+              <div>
           <input
             className="form-control log"
             type="email"
