@@ -17,7 +17,12 @@ class UrlshortenerController < ApplicationController
 
     original_url.strip!
 
-    hash = Digest::MD5.hexdigest(original_url)
+    random = SecureRandom.hex
+
+
+    combined = original_url + random
+
+    hash = Digest::MD5.hexdigest(combined)
 
     shortened_url = "http://test.tin.ee/#{hash[0, 7]}"
 
@@ -124,10 +129,6 @@ end
   private
 
 
-  # def generate_shortened_url(original_url)
-  #   hash = Digest::MD5.hexdigest(original_url)
-  #   "http://example.com/#{hash[0, 7]}" # Modify the URL structure as needed
-  # end
 
   def user_params
     params.require(:url).permit(:original_url, :shortened_url)
@@ -179,4 +180,12 @@ end
   #     flash[:error] = 'Shortened URL not found'
   #     redirect_to root_path # or wherever you want to redirect if the URL isn't found
   #   end
+  # end
+
+
+
+
+   # def generate_shortened_url(original_url)
+  #   hash = Digest::MD5.hexdigest(original_url)
+  #   "http://example.com/#{hash[0, 7]}" # Modify the URL structure as needed
   # end

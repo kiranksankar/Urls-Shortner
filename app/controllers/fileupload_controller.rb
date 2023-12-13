@@ -72,7 +72,13 @@ class FileuploadController < ApplicationController
 
 
   def generate_shortened_url(original_url)
-      hash = Digest::MD5.hexdigest(original_url)
+
+    random = SecureRandom.hex
+
+
+    combined = original_url + random
+
+      hash = Digest::MD5.hexdigest(combined)
       "http://test.tin.ee/#{hash[0, 7]}"
 
 
