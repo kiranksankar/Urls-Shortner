@@ -37,6 +37,10 @@ a:hover{
 .link {
     font-size: 24px;
     }
+    .show {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
  </style>
 </head>
 
@@ -46,6 +50,10 @@ a:hover{
    <%= render  "home/navbar1" %>
   </div>
   <div class="body">
+    <% if flash[:notice].present? %>
+    <h5 class="alert alert-success show" id="success"><%= flash[:notice] %></h5>
+
+    <% end %>
     <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
       <div class="jumbotron jumbotron-fluid bg-transparent">
         <center class="url">
@@ -75,4 +83,14 @@ a:hover{
   </div>
 </div>
 </body>
+<script>
+
+var registerErrorDiv = document.getElementById('success');
+
+if (registerErrorDiv) {
+  setTimeout(function() {
+    registerErrorDiv.style.opacity = '0';
+  }, 3000); 
+}
+</script>
 </html>

@@ -86,6 +86,10 @@ a {
 p{
   animation: glowing 1s infinite; 
 }
+.show {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
 
   </style>
 </head>
@@ -93,7 +97,7 @@ p{
 
  <% if flash[:login_success].present? %>
   
-    <h5 class="alert alert-success"><%= flash[:login_success]%></h5>
+    <h5 class="alert alert-success show" id="success"><%= flash[:login_success]%></h5>
   
 
     <% end %>
@@ -119,4 +123,14 @@ p{
     </div>
     </a>
 </body>
+<script>
+
+var registerErrorDiv = document.getElementById('success');
+
+if (registerErrorDiv) {
+  setTimeout(function() {
+    registerErrorDiv.style.opacity = '0';
+  }, 3000); 
+}
+</script>
 </html>

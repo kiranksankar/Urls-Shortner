@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get "/logout", to: 'session#destroy'
+
   get '/about', to: 'home#about'
 
   get '/upload', to: 'fileupload#upload'

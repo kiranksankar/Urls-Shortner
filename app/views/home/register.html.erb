@@ -28,6 +28,11 @@
 a:hover{
   color: red;
 }
+.show {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
 
   </style>
 </head>
@@ -40,7 +45,7 @@ a:hover{
      </div>
      <br>
       <% if flash[:register_error].present? %> 
-  <div class="show">
+  <div class="show" id="registerError">
     <h5 style="color:red;">
       <% flash[:register_error].each_with_index do |error, index| %>
         <%= error %> <%= index < flash[:register_error].size - 1 ? ', ' : '' %>
@@ -103,6 +108,15 @@ a:hover{
 
 
 <script>
+
+var registerErrorDiv = document.getElementById('registerError');
+
+if (registerErrorDiv) {
+  setTimeout(function() {
+    registerErrorDiv.style.opacity = '0';
+  }, 3000); 
+}
+
   function togglePassword() {
     var passwordFields = document.querySelectorAll('.log[type="password"]');
     var checkbox = document.querySelector('input[type="checkbox"]');

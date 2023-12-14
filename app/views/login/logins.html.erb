@@ -48,13 +48,29 @@ a:hover{
   <div class="body">
     <%= render 'home/navbar1' %> 
 
-          <% if flash[:login_error].present? %>
-            <center><h5 class="alert alert-show" style="color: red;"><%= flash[:login_error] %></h5></center>
-              <% else %>
-          <% if flash[:register_success].present? %>
-           <center> <h3 class="alert alert-show" style="color: green;"><%= flash[:register_success] %></h3></center>
-              <% end %>
-          <% end %>
+    <% if flash[:login_error].present? %>
+  <script>
+
+      alert("<%= j flash[:login_error] %>"); 
+  
+  </script>
+  
+    <% elsif flash[:register_success].present? %>
+  
+  <script>
+  
+  alert("<%= j flash[:register_success] %>");
+  
+  </script>
+    <% end %>
+
+          <%# <% if flash[:login_error].present? %> %>
+            <%# <center><h5 class="alert alert-show" style="color: red;" id="loginError"><%= flash[:login_error] %></h5></center> %>
+              <%# <% else %> %>
+          <%# <% if flash[:register_success].present? %> %>
+           <%# <center> <h3 class="alert alert-show" style="color: green;" id="registerSuccess"><%= flash[:register_success] %></h3></center> %>
+              <%# <% end %> %>
+          <%# <% end %> %>
 
     <div class="row">
       <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
@@ -110,8 +126,19 @@ a:hover{
   </div>
 <%# </div> %>
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script>
+  
+
+  $(document).ready(function() {
+    // Fading out login error message after 3 seconds
+    $('#loginError').delay(3000).fadeOut('slow');
+
+    // Fading out register success message after 3 seconds
+    $('#registerSuccess').delay(3000).fadeOut('slow');
+  });
+
+
   function togglePassword() {
     var passwordField = document.getElementById('passwordField');
 
