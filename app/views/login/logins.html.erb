@@ -1,11 +1,65 @@
 
+
+
+
+  <div>
+  <div>
+    <%= render 'home/navbar1' %> 
+  </div>
+  
+
+
 <% if flash[:login_error].present? %>
-  <div class="alert fade show" >
+  <div class="show" >
     <% flash[:login_error].each do |error| %>
-     <div class="form-control">
-        <h4 style="color:red;"><%=error %> </h4>
+     <%# <div class="form-control"> %>
+        <h5 style="color:red;"><%=error %> </h5>
     </div>
     <% end %>
     <% end %>
    
   </div>
+
+  <div class="reg">
+    <div class="row">
+      <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <center>
+            <h1 class="display-2 justify-center head">URL Shortner</h1>
+            <h4 class="head">
+              <center> All types of URLs are shortened Here </center>
+            </h4>
+          </center>
+        </div>
+
+        <div class="col-sm-4">
+          <form method="POST" action="/session">
+            <div class="row">
+              <div>
+                <input class="form-control log" type="email" name="login[email]" placeholder="Example@gmail.com" />
+              </div>
+            </div>
+            <br>
+            <div>
+              <input class="form-control log" type="password" name="login[password]" placeholder="***********" />
+            </div>
+            <br>
+            <input type="checkbox" onchange="togglePassword();" /> <span class="head"> Show Password</span>
+            <br><br>
+            <center>
+              <button class="btn-primary1 form-control" type="submit">Login</button>
+            </center>
+            <div class="create">
+              <a href="/recipie" class="head" style="color:black;">
+                  <br>
+                  <br>
+                <h5 class="head">Create a New account ?</h5>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

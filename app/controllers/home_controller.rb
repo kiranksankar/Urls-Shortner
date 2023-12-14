@@ -7,6 +7,12 @@ class HomeController < ApplicationController
 
   end
 
+  def navbar
+
+  end
+
+
+
   def about
 
   end

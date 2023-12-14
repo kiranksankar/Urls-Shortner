@@ -1,7 +1,14 @@
 
-<% if flash[:register_error].present? %> 
+
+
+
+<div>
+  <div>
+     <%= render  "home/navbar1" %>
+  </div>
+  <% if flash[:register_error].present? %> 
 <br>
-  <div class="alert fade show">
+  <div class="show">
     <p style="color:red;">
       <% flash[:register_error].each_with_index do |error, index| %>
         <%= error %> <%= index < flash[:register_error].size - 1 ? ', ' : '' %>
@@ -9,5 +16,47 @@
     </p>
   </div>
 <% end %>
+  
+  <div class="reg">
+    <div class="row">
+      <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <center>
+            <h1 class="display-2 justify-center head">URL Shortner</h1>
+            <h4 class="head">
+              <center> All types of URLs are shortened Here </center>
+            </h4>
+          </center>
+        </div>
 
-
+        <div class="col-sm-4">
+          <%= form_with(model: User.new, url: users_path, method: :post) do |form| %>
+            <div class="row">
+              <div>
+                <%= form.text_field :username, class: 'form-control log', placeholder: 'Enter the Username' %>
+              </div>
+              <div>
+                <%= form.email_field :email, class: 'form-control log', placeholder: 'Example@gmail.com' %>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-6">
+                <%= form.password_field :password, class: 'form-control log', placeholder: '***********' %>
+              </div>
+              <div class="col-6">
+                <%= form.password_field :password_confirmation, class: 'form-control log', placeholder: '***********' %>
+              </div>
+            </div>
+            <br>
+            <input type="checkbox" onchange="togglePassword();" /> <span class="head"> Show Password</span>
+            <br><br>
+            <center>
+              <%= form.submit 'Register', class: 'btn-primary1 form-control' %>
+            </center>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get '/show', to: 'urlshortener#show'
   get '/summary', to: 'urlshortener#index'
 
+
+  get '/navbar1', to: 'home#navbar'
+
   get '/navbar', to: 'urlshortener#navbar'
   get '/count', to: 'home#count'
 
