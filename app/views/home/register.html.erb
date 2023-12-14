@@ -1,5 +1,38 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>Login  </title>
+  <style>
+ .body {
+  background-image: url('<%= asset_path('pexels-photo-1365795.jpeg') %>');
+  background-size: cover;     
+  background-position: center center; 
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+.head1
+{
+  color:white;
+  
+}
 
+ a {
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 12px;
+  color: #000000;
+
+}
+a:hover{
+  color: red;
+}
+
+  </style>
+</head>
+
+<body>
 
 
 <div>
@@ -17,13 +50,13 @@
   </div>
 <% end %>
   
-  <div class="reg">
+  <div class="body">
     <div class="row">
       <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
         <div class="col-sm-6">
           <center>
             <h1 class="display-2 justify-center head">URL Shortner</h1>
-            <h4 class="head">
+            <h4 class="head1">
               <center> All types of URLs are shortened Here </center>
             </h4>
           </center>
@@ -49,14 +82,23 @@
               </div>
             </div>
             <br>
-            <input type="checkbox" onchange="togglePassword();" /> <span class="head"> Show Password</span>
+            <input type="checkbox" /> <span class="head1"> Show Password</span>
             <br><br>
             <center>
               <%= form.submit 'Register', class: 'btn-primary1 form-control' %>
             </center>
           <% end %>
+          <div class="create">
+              <a href="/logins" style="color:black;">
+                  <br>
+                  <br>
+                <h5 class="head1">Already have an account </h5>
+              </a>
+            </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</body>
+</html>
