@@ -66,12 +66,13 @@ const Logins = () => {
             <button className=" btn-primary1 form-control" type="submit">
               Register
             </button>
-            <div className="create">
+           
+          </center>
+          <div className="create">
             <Link to="/recipie">
                <h5 className="head">Create a New account ? </h5>
             </Link>
             </div>
-          </center>
 
 
         </form>
