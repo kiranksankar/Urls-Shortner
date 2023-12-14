@@ -95,23 +95,25 @@
   </div>
 </div>
 </body>
-<script>
- 
-  function removeAlerts() {
-    
-    ['#error-alert', '#url-error-alert', '#success-alert'].forEach(function(alertId) {
-      var alertElement = document.querySelector(alertId);
-      if (alertElement) {
-        setTimeout(function() {
-          alertElement.remove(); 
-        }, 3000); // Adjust the timeout duration in milliseconds (here set to 5000ms or 5 seconds)
-      }
-    });
-  }
 
-  // Call the function when the page loads
-  window.addEventListener('load', function() {
-    removeAlerts();
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+<script>
+  $(document).ready(function() {
+    // Fading out error alert after 3 seconds
+    if ($('#error-alert').length > 0) {
+      $('#error-alert').delay(3000).fadeOut('slow');
+    }
+
+    // Fading out URL error alert after 3 seconds
+    if ($('#url-error-alert').length > 0) {
+      $('#url-error-alert').delay(3000).fadeOut('slow');
+    }
+
+    // Fading out success alert after 3 seconds
+    if ($('#success-alert').length > 0) {
+      $('#success-alert').delay(3000).fadeOut('slow');
+    }
   });
 </script>
 </html>

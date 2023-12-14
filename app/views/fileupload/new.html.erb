@@ -95,12 +95,11 @@
   
   </div>
   </div>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 
 <script>
-
-    document.getElementById('btnclick').addEventListener('click', function() {
-  window.location.href = "/upload"; 
+  document.getElementById('btnclick').addEventListener('click', function() {
+    window.location.href = "/upload"; 
   });
   
   function copyText(shortenedUrl) {
@@ -113,19 +112,16 @@
     alert("Copied the text: " + shortenedUrl);
   }
 
+  $(document).ready(function() {
+    if ($('#alert').length > 0) {
+      $('#alert').delay(3000).fadeOut('slow');
+    }
 
- function removeAlerts() {
-  var alertElement = document.querySelector('#alert');
-  if (alertElement) {
-    setTimeout(function() {
-      alertElement.remove();
-    }, 3000); 
-  }
-}
+    if ($('#error-alert').length > 0) {
+      $('#error-alert').delay(3000).fadeOut('slow');
+    }
+  });
 
-window.addEventListener('load', function() {
-  removeAlerts();
-});
 </script>
 </body>
 </html>

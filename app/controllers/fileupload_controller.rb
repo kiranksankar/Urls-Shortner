@@ -53,8 +53,7 @@ class FileuploadController < ApplicationController
     else
 
       flash[:error] = 'Please select a CSV file to upload.'
-      redirect_to "/s
-      "
+      redirect_to "/upload"
 
     end
 

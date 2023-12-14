@@ -64,14 +64,7 @@ a:hover{
   </script>
     <% end %>
 
-          <%# <% if flash[:login_error].present? %> %>
-            <%# <center><h5 class="alert alert-show" style="color: red;" id="loginError"><%= flash[:login_error] %></h5></center> %>
-              <%# <% else %> %>
-          <%# <% if flash[:register_success].present? %> %>
-           <%# <center> <h3 class="alert alert-show" style="color: green;" id="registerSuccess"><%= flash[:register_success] %></h3></center> %>
-              <%# <% end %> %>
-          <%# <% end %> %>
-
+      
     <div class="row">
       <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
         <div class="col-sm-6">
@@ -126,17 +119,16 @@ a:hover{
   </div>
 <%# </div> %>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script>
   
 
-  $(document).ready(function() {
-    // Fading out login error message after 3 seconds
-    $('#loginError').delay(3000).fadeOut('slow');
+  // $(document).ready(function() {
 
-    // Fading out register success message after 3 seconds
-    $('#registerSuccess').delay(3000).fadeOut('slow');
-  });
+  //   $('#loginError').delay(3000).fadeOut('slow');
+
+
+  //   $('#registerSuccess').delay(3000).fadeOut('slow');
+  // });
 
 
   function togglePassword() {
