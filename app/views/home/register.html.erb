@@ -92,7 +92,7 @@ a:hover{
               <a href="/logins" style="color:black;">
                   <br>
                   <br>
-                <h5 class="head1">Already have an account </h5>
+                <h6 style="color:red;">Already have an account ? </h6>
               </a>
             </div>
         </div>
@@ -101,4 +101,26 @@ a:hover{
   </div>
 </div>
 </body>
+
+
+
+<script>
+  function togglePassword() {
+    var passwordFields = document.querySelectorAll('.log[type="password"]');
+    var checkbox = document.querySelector('input[type="checkbox"]');
+    
+    checkbox.addEventListener('change', function () {
+      passwordFields.forEach(function (field) {
+        if (checkbox.checked) {
+          field.type = 'text';
+        } else {
+          field.type = 'password';
+        }
+      });
+    });
+  }
+  
+  window.addEventListener('DOMContentLoaded', togglePassword);
+</script>
+
 </html>

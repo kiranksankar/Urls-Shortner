@@ -17,6 +17,12 @@
   color:white;
   
 }
+.head
+{
+  color:red;
+  float:right;
+  
+}
 
  a {
   text-decoration: none;
@@ -73,9 +79,10 @@ a:hover{
                 <input class="form-control log" type="email" name="login[email]" placeholder="Example@gmail.com" />
               </div>
             </div>
-            <br>
+            <br>    color: red;
+
             <div>
-              <input class="form-control log" type="password" name="login[password]" placeholder="***********" />
+              <input class="form-control log" type="password" name="login[password]"  id="passwordField" placeholder="***********" />
             </div>
             <br>
             <input type="checkbox" onchange="togglePassword();" /> <span class="head1"> Show Password</span>
@@ -84,10 +91,19 @@ a:hover{
               <button class="btn-primary1 form-control" type="submit">Login</button>
             </center>
             <div class="create">
-              <a href="/recipie" style="color:black;">
+             
                   <br>
                   <br>
-                <h5 class="head1">Create a New account ?</h5>
+                  <div class="row">
+                      <div class="col-sm-5">
+                  <h6 style="color:red;">Forgot password?</h6>
+                      </div>
+
+                 <div class="col-sm-7">
+                   <a href="/recipie" style="color:black;">
+                <h6 class="head">Create a New account ?</h6>
+                </div>
+                </div>
               </a>
             </div>
           </form>
@@ -97,6 +113,21 @@ a:hover{
     </div>
   </div>
 </div>
+
+
+<script>
+  function togglePassword() {
+    var passwordField = document.getElementById('passwordField');
+
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text';
+    } else {
+      passwordField.type = 'password';
+    }
+  }
+</script>
+
+
 
 </body>
 </html>
