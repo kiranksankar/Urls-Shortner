@@ -22,6 +22,7 @@ class HomeController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
+      flash[:register_success] = 'Registered Succesfully'
       redirect_to '/logins'
     else
       flash[:register_error] = user.errors.full_messages

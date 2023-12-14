@@ -34,23 +34,21 @@ a:hover{
 
 <body>
 
-
+  <div class="body">
 <div>
-  <div>
      <%= render  "home/navbar1" %>
-  </div>
-  <% if flash[:register_error].present? %> 
-<br>
+     </div>
+     <br>
+      <% if flash[:register_error].present? %> 
   <div class="show">
-    <p style="color:red;">
+    <h5 style="color:red;">
       <% flash[:register_error].each_with_index do |error, index| %>
         <%= error %> <%= index < flash[:register_error].size - 1 ? ', ' : '' %>
       <% end %>
-    </p>
+    </h5>
   </div>
 <% end %>
-  
-  <div class="body">
+
     <div class="row">
       <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
         <div class="col-sm-6">
@@ -82,7 +80,7 @@ a:hover{
               </div>
             </div>
             <br>
-            <input type="checkbox" /> <span class="head1"> Show Password</span>
+            <input type="checkbox" onchange="togglePassword();"/> <span class="head1"> Show Password</span>
             <br><br>
             <center>
               <%= form.submit 'Register', class: 'btn-primary1 form-control' %>

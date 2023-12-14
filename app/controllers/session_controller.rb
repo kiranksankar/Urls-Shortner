@@ -4,9 +4,10 @@ class SessionController < ApplicationController
     user = User.find_by(email:login_params[:email])
     if user && user.authenticate(login_params[:password])
       session[:user_id] = user.id
+      flash[:login_success] = 'Logined Successfully'
       redirect_to '/count'
     else
-      flash[:login_error] = ['invalid credentials please check the Email and Password']
+      flash[:login_error] = 'invalid credentials please check the Email and Password'
       redirect_to '/logins'
     end
 

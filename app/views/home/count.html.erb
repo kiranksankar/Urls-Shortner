@@ -90,6 +90,13 @@ p{
   </style>
 </head>
 <%= render  "urlshortener/navbar"%>
+
+ <% if flash[:login_success].present? %>
+  
+    <h5 class="alert alert-success"><%= flash[:login_success]%></h5>
+  
+
+    <% end %>
 <body>
     
   

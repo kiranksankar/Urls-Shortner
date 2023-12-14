@@ -38,28 +38,24 @@ a:hover{
   </style>
 </head>
 
+    
+        
+
 <body>
 
 
-  <div>
-  <div>
-    <%= render 'home/navbar1' %> 
-  </div>
-  
-
-
-<% if flash[:login_error].present? %>
-  <div class="show" >
-    <% flash[:login_error].each do |error| %>
-     <%# <div class="form-control"> %>
-        <h5 style="color:red;"><%=error %> </h5>
-    </div>
-    <% end %>
-    <% end %>
-   
-  </div>
-
+  <%# <div> %>
   <div class="body">
+    <%= render 'home/navbar1' %> 
+
+          <% if flash[:login_error].present? %>
+            <center><h5 class="alert alert-show" style="color: red;"><%= flash[:login_error] %></h5></center>
+              <% else %>
+          <% if flash[:register_success].present? %>
+           <center> <h3 class="alert alert-show" style="color: green;"><%= flash[:register_success] %></h3></center>
+              <% end %>
+          <% end %>
+
     <div class="row">
       <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
         <div class="col-sm-6">
@@ -112,7 +108,7 @@ a:hover{
       </div>
     </div>
   </div>
-</div>
+<%# </div> %>
 
 
 <script>
