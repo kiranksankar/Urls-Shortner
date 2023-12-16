@@ -78,7 +78,7 @@ class FileuploadController < ApplicationController
     combined = original_url + random
 
       hash = Digest::MD5.hexdigest(combined)
-      "http://test.tin.ee/#{hash[0, 7]}"
+      "https://shorturl-oazb.onrender.com/#{hash[0, 7]}"
 
 
     end
