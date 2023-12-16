@@ -24,7 +24,7 @@ class UrlshortenerController < ApplicationController
 
     hash = Digest::MD5.hexdigest(combined)
 
-    shortened_url = "http://localhost:3000/#{hash[0, 7]}"
+    shortened_url = "https://shorturl-oazb.onrender.com/#{hash[0, 4]}"
 
     { original_url: original_url, shortened_url: shortened_url }
 
@@ -97,7 +97,7 @@ end
 
 def redirect
     hash = params[:shortened_url]
-    @url = Url.find_by(shortened_url: "http://localhost:3000/#{hash}")
+    @url = Url.find_by(shortened_url: "https://shorturl-oazb.onrender.com/#{hash}")
 
     if @url
       original = @url.original_url
