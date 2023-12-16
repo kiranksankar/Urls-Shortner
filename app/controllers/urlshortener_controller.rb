@@ -24,7 +24,7 @@ class UrlshortenerController < ApplicationController
 
     hash = Digest::MD5.hexdigest(combined)
 
-    shortened_url = "http://test.tin.ee/#{hash[0, 7]}"
+    shortened_url = "http://localhost:3000/#{hash[0, 7]}"
 
     { original_url: original_url, shortened_url: shortened_url }
 
@@ -95,7 +95,21 @@ end
 
 # end
 
+def redirect
+    hash = params[:shortened_url]
+    @url = Url.find_by(shortened_url: "http://localhost:3000/#{hash}")
 
+    if @url
+      original = @url.original_url
+      response.headers['Location'] = original
+      render plain: 'Redirecting..........', status: :found
+      # allow_other_host: true
+    else
+
+      render plain: 'Shortened URL not found', status: :not_found
+      redirect_to root_path
+    end
+  end
 
 
 

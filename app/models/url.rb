@@ -1,14 +1,14 @@
 class Url < ApplicationRecord
   validates :original_url, presence: true, format: { with: URI.regexp(%w[http https]), message: 'must start with http:// or https://' }
-
+  validates :shortened_url, presence: true, uniqueness: true, format: { with: URI.regexp(%w[http https]), message: 'must start with http:// or https://' }
 
 # url shortened are searched to get originl url
 
-  # validates :shortened_url, presence: true, uniqueness: true
 
-  # def self.find_original_url(shortened_url)
-  #   find_by(shortened_url: shortened_url)&.original_url
-  # end
+
+  def self.find_by_shortened_url(shortened_url)
+    find_by(shortened_url: shortened_url)
+  end
   # before_validation :normalize_url
 
   # Add the shortened_url field to the model
