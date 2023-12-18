@@ -50,7 +50,9 @@ class HomeController < ApplicationController
       flash[:alert] = 'Invalid confirmation link.'
       redirect_to root_path
     end
+    
   end
+
 
 
 
@@ -61,7 +63,7 @@ class HomeController < ApplicationController
 
 
 
-  
+
   def count
     @count = Url.count
     puts(@count)
