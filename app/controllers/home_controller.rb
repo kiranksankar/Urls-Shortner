@@ -33,27 +33,35 @@ class HomeController < ApplicationController
       # redirect_to root_path
       redirect_to '/recipie'
     end
-
-    def confirm_email
-      user = User.find_by(confirmation_token: params[:token])
-      if user
-        user.confirm_email
-        # session[:user_id] = user.id  # Set the session after email confirmation
-        flash[:notice] = 'Email confirmed. You can now log in.'
-        redirect_to '/logins'
-      else
-        flash[:alert] = 'Invalid confirmation link.'
-        redirect_to root_path
-      end
-    end
-
   end
+
+
+
+
+
+  def confirm_email
+    user = User.find_by(confirmation_token: params[:token])
+    if user
+      user.confirm_email
+      session[:user_id] = user.id  # Set the session after email confirmation
+      flash[:notice] = 'Email confirmed. You can now log in.'
+      redirect_to '/logins'
+    else
+      flash[:alert] = 'Invalid confirmation link.'
+      redirect_to root_path
+    end
+  end
+
+
 
 
   def register
 
   end
 
+
+
+  
   def count
     @count = Url.count
     puts(@count)
