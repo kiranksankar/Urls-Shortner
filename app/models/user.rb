@@ -1,5 +1,5 @@
 class User < ApplicationRecord
- 
+
 
   has_secure_password
 
@@ -18,7 +18,7 @@ class User < ApplicationRecord
     self.confirmation_token = SecureRandom.urlsafe_base64.to_s unless self.confirmation_token.present?
   end
 
-  def confirm_email
+  def confirms_email
     self.email_confirmed = true
     self.confirmation_token = nil
     save!
