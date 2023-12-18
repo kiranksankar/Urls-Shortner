@@ -7,7 +7,8 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { maximum: 50 }
 
 
-  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
+  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  # , uniqueness: true
 
 
   validates :password, presence: true, length: { minimum: 6 }
@@ -15,7 +16,7 @@ class User < ApplicationRecord
   before_create :generate_confirmation_token
 
   def generate_confirmation_token
-    self.confirmation_token = SecureRandom.urlsafe_base64.to_s
+    self.confirmation_token = SecureRandom.urlsafe_base64.to_s unless self.confirmation_token.present?
   end
 
   def confirm_email
