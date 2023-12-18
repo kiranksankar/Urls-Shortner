@@ -38,7 +38,7 @@ class HomeController < ApplicationController
       user = User.find_by(confirmation_token: params[:token])
       if user
         user.confirm_email
-        session[:user_id] = user.id  # Set the session after email confirmation
+        # session[:user_id] = user.id  # Set the session after email confirmation
         flash[:notice] = 'Email confirmed. You can now log in.'
         redirect_to '/logins'
       else
