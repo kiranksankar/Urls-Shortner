@@ -97,7 +97,9 @@ end
 
 def redirect
     hash = params[:shortened_url]
+    puts(hash)
     @url = Url.find_by(shortened_url: "https://shorturl-oazb.onrender.com/#{hash}")
+
 
     if @url
       original = @url.original_url

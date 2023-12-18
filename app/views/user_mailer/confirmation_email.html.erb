@@ -1,0 +1,7 @@
+<p>Hi <%= @user.email %>,</p>
+
+<p>Welcome to our site! Please click the link below to confirm your email address:</p>
+
+<%# <%= link_to 'Confirm Email', confirm_email_url(token: @user.confirmation_token) %> 
+<%= link_to 'Confirm Email', confirm_email_url(token: @user.confirmation_token) %>
+
