@@ -31,14 +31,15 @@ Rails.application.routes.draw do
 
   get 'generate_pdf_summary', to: 'downloads#generate_pdf_summary'
   get '/generate_User_summary', to: 'downloads#generate_User_summary'
-
+  
+  get '/confirm_email', to: 'home#confirm_email', as: 'confirm_email'
 
   get '/url_summary', to: 'usersummmary#generate_pdf_summary'
   get '/user_summary', to: 'usersummmary#generate_User_summary'
 
   get '/:shortened_url', to: 'urlshortener#redirect', as: 'redirect'
 
-  get '/confirm_email', to: 'home#confirm_email', as: 'confirm_email'
+
 
 
 

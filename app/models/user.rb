@@ -14,13 +14,18 @@ class User < ApplicationRecord
 
   before_create :generate_confirmation_token
 
+
   def generate_confirmation_token
-    self.confirmation_token = SecureRandom.urlsafe_base64.to_s unless self.confirmation_token.present?
+
+    self.confirmation_token = SecureRandom.hex(5) unless self.confirmation_token.present?
+
   end
 
   def confirms_email
+
     self.email_confirmed = true
     self.confirmation_token = nil
+
     save!
   end
 end

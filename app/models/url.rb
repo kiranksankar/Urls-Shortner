@@ -7,8 +7,11 @@ class Url < ApplicationRecord
 
 
   def self.find_by_shortened_url(shortened_url)
+
     find_by(shortened_url: shortened_url)
+    
   end
+
   # before_validation :normalize_url
 
   # Add the shortened_url field to the model

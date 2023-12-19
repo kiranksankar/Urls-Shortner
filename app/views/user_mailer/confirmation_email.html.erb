@@ -3,5 +3,7 @@
 <p>Welcome to our site! Please click the link below to confirm your email address:</p>
 
 <%# <%= link_to 'Confirm Email', confirm_email_url(token: @user.confirmation_token) %> 
-<%= link_to 'Confirm Email', confirm_email_url(token: @user.confirmation_token) %>
+<%# <%= link_to 'Confirm Email', confirm_email_url(token: @user.confirmation_token) %> 
+<a href="<%= confirm_email_url(token: @user.confirmation_token) %>">Confirm Email</a>
+
 

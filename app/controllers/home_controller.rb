@@ -40,7 +40,9 @@ class HomeController < ApplicationController
 
 
   def confirm_email
-    user = User.find_by(confirmation_token: params[:token])
+    puts("++++++++++++++++++:::::::::::")
+    hash = params[:token]
+    user = User.find_by(hash)
     if user
       user.confirms_email
       session[:user_id] = user.id  # Set the session after email confirmation
