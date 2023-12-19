@@ -54,6 +54,12 @@ a:hover{
     <h5 class="alert alert-success show" id="success"><%= flash[:notice] %></h5>
 
     <% end %>
+    <% if flash[:alert].present? %>
+    <%# <script>
+      alert("<%= j flash[:alert] %>")
+      <%# </script> %>
+    <h5 class="alert alert-success show" id="success"><%= flash[:alert] %></h5>
+    <% end %>
     <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
       <div class="jumbotron jumbotron-fluid bg-transparent">
         <center class="url">
@@ -86,7 +92,7 @@ a:hover{
 <script>
 
 var registerErrorDiv = document.getElementById('success');
-
+ a
 if (registerErrorDiv) {
   setTimeout(function() {
     registerErrorDiv.style.opacity = '0';

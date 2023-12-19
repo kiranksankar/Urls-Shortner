@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
   root 'home#index'
+  
+  get '/about', to: 'home#about'
 
   get '/recipie' => 'home#register'
 
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
 
   get "/logout", to: 'session#destroy'
 
-  get '/about', to: 'home#about'
+
 
   get '/upload', to: 'fileupload#upload'
 
