@@ -3,18 +3,25 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get '/recipie' => 'home#register'
+
+  get '/confirm_email', to: 'home#confirm_email', as: 'confirm_email'
+
+  get '/logins', to: 'login#logins'
+
   get "/logout", to: 'session#destroy'
 
   get '/about', to: 'home#about'
 
   get '/upload', to: 'fileupload#upload'
-  get '/recipie' => 'home#register'
+
+
 
   get '/filesummary', to: 'fileupload#new'
 
   get '/new', to: 'urlshortener#new'
 
-  get '/logins', to: 'login#logins'
+
   get '/urlshortener', to:'urlshortener#url'
 
   get '/show', to: 'urlshortener#show'
@@ -31,8 +38,8 @@ Rails.application.routes.draw do
 
   get 'generate_pdf_summary', to: 'downloads#generate_pdf_summary'
   get '/generate_User_summary', to: 'downloads#generate_User_summary'
-  
-  get '/confirm_email', to: 'home#confirm_email', as: 'confirm_email'
+
+
 
   get '/url_summary', to: 'usersummmary#generate_pdf_summary'
   get '/user_summary', to: 'usersummmary#generate_User_summary'

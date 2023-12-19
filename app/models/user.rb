@@ -21,11 +21,11 @@ class User < ApplicationRecord
 
   end
 
-  def confirm_email
+  # def confirm_email
 
-    self.email_confirmed = true
-    self.confirmation_token = nil
+  #   self.email_confirmed = true
+  #   self.confirmation_token = nil
 
-    save!
-  end
+  #   save!
+  # end
 end

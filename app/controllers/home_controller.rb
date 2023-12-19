@@ -41,13 +41,20 @@ class HomeController < ApplicationController
 
   def confirm_email
     puts("++++++++++++++++++:::::::::::")
-    hash = params[:token]
-    user = User.find_by(hash)
+    user = User.find_by(confirmation_token: params[:token])
     if user
-      user.confirms_email
-      session[:user_id] = user.id  # Set the session after email confirmation
-      flash[:notice] = 'Email confirmed. You can now log in.'
-      redirect_to '/logins'
+      user.email_confirmed =true
+      user.confirmation_token = nil
+
+
+      if user.save
+        session[:user_id] = user.id
+        flash[:notice] = 'Email confirmed. You can now log in.'
+        redirect_to logins_path
+      else
+        flash[:alert] = 'Failed to confirm email. Please try again.'
+        redirect_to root_path
+      end
     else
       flash[:alert] = 'Invalid confirmation link.'
       redirect_to root_path
