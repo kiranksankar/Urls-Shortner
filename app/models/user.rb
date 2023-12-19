@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   end
 
-  def confirms_email
+  def confirm_email
 
     self.email_confirmed = true
     self.confirmation_token = nil
