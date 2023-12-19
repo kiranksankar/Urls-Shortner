@@ -44,6 +44,7 @@ class HomeController < ApplicationController
     user = User.find_by(confirmation_token: params[:token])
     if user
       user.email_confirmed =true
+      puts(user.email_confirmed)
       user.confirmation_token = nil
 
 
