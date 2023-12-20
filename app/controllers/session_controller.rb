@@ -18,6 +18,11 @@ class SessionController < ApplicationController
     redirect_to root_path, notice: "Logged out successfully"
   end
 
+
+  
+
+
+
   private
     def login_params
       params.require(:login).permit(:email, :password)

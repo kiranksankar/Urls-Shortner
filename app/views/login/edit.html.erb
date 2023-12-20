@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>forgot password</title>
+    <style>
+
+
+           body {
+                background-image: url('<%= asset_path('pexels-photo-1365795.jpeg') %>');
+                background-size: cover;     
+                background-position: center; 
+                font-family: Arial, sans-serif;
+                margin: 0;
+              }
+              .login-form {
+               padding : 40px ;
+               /* background-color: lavender; */
+               background-size: cover;     
+               background-position: center center; 
+               border-radius: 20px;
+               max-width:80%;
+          
+              }
+              .btn-primary
+              {
+                width:50%;
+              }
+              .back{
+                margin-top:40px;
+                color:red;
+              }
+              .form{
+                height:50px;
+              }
+              h3{
+                color:white;
+              }
+              h5{
+                color:white;
+              }
+    </style>
+  </head>
+      <body>
+            <div>  
+            <%= render  "home/navbar1" %>
+            </div>
+          
+               <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
+                  <div class="login-form">
+                   <form action="/verify_email" method="post">
+                    
+                    <h5> Enter the email adress used for register to <span style="color:red;">Reset Password</span></h5>
+                    <br>
+                    <label for="email"><h3>Email:</h3></label>
+                    <br><br>
+                    <input type="email" id="email" name="email"  class="form-control form"required><br>
+                    <center>
+                    <input type="submit" class="btn-primary"value="Verify">
+                  </form>
+                  <br>
+                      <div>
+                  <a href="/logins" > <h5 class="back">Go back to the Login page</h5></a>
+                      </div>    
+                      </center>                   
+                  </div>
+                </div>
+            
+    </body>
+
+</html>

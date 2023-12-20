@@ -73,7 +73,6 @@ class HomeController < ApplicationController
 
 
 
-
   def count
     @count = Url.count
     puts(@count)

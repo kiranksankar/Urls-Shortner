@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   root 'home#index'
-  
+
   get '/about', to: 'home#about'
 
   get '/recipie' => 'home#register'
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/confirm_email', to: 'home#confirm_email', as: 'confirm_email'
 
   get '/logins', to: 'login#logins'
+
+  get '/forgotpassword', to: 'login#edit'
 
   get "/logout", to: 'session#destroy'
 
