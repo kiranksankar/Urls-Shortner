@@ -20,8 +20,11 @@ class HomeController < ApplicationController
   def create
 
     @user = User.new(user_params)
+
     if @user.save
+      # @user.generate_confirmation_token
       UserMailer.confirmation_email(@user).deliver_now
+
       redirect_to root_path, notice: 'Please check your email to confirm your account.'
       # session[:user_id] = @user.id
       # flash[:register_success] = 'Registered Succesfully'
@@ -42,23 +45,43 @@ class HomeController < ApplicationController
   def confirm_email
     puts("++++++++++++++++++:::::::::::")
     user = User.find_by(confirmation_token: params[:token])
+    puts(user.password_digest)
+    puts(user.username)
+    puts(user.confirmation_token)
+    puts(user.email)
+
+
     if user
-      user.email_confirmed =true
-      puts(user.email_confirmed)
-      user.confirmation_token = nil
+
+      user.assign_attributes(email_confirmed: true, confirmation_token: nil)
+
+        puts(user.email_confirmed)
+
+        puts(user.attributes)
+
+        if user.save(validate: false)
 
 
-      if user.save
-        session[:user_id] = user.id
-        flash[:notice] = 'Email confirmed. You can now log in.'
-        redirect_to logins_path
-      else
-        flash[:alert] = 'Failed to confirm email. Please try again.'
-        redirect_to root_path
-      end
+          session[:user_id] = user.id
+
+          flash[:notice] = 'Email confirmed. You can now log in.'
+
+          redirect_to logins_path
+
+        else
+
+          flash[:alert] = 'Failed to confirm email. Please try again.'
+          redirect_to root_path
+
+
+        end
+
+
     else
+
       flash[:alert] = 'Invalid confirmation link.'
       redirect_to root_path
+      
     end
 
   end

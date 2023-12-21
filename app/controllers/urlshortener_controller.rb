@@ -60,6 +60,8 @@ class UrlshortenerController < ApplicationController
   else
 
     flash[:success] = 'All URLs were successfully saved'
+
+    
     redirect_to multiurls_path(input_urls: @input_urls)
 
   end
