@@ -4,11 +4,12 @@ class SessionController < ApplicationController
     user = User.find_by(email:login_params[:email])
 
     if user && user.authenticate(login_params[:password])
-      
-      if user.email_confirmed
+
+      if user.confirmation_token == "confirmed"
 
 
         session[:user_id] = user.id
+
         flash[:login_success] = 'Logined Successfully'
         redirect_to '/count'
 

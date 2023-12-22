@@ -53,7 +53,7 @@ class HomeController < ApplicationController
 
     if user
 
-      user.assign_attributes(email_confirmed: true, confirmation_token: nil)
+      user.assign_attributes(email_confirmed: true, confirmation_token: "confirmed")
 
         puts(user.email_confirmed)
 
