@@ -47,7 +47,7 @@ class UrlshortenerController < ApplicationController
       break
     end
 
-    new_url = Url.new(original_url: url[:original_url], shortened_url: url[:shortened_url])
+    new_url = current_user.urls.new(original_url: url[:original_url], shortened_url: url[:shortened_url])
 
     errors = true unless new_url.save
   end
@@ -61,7 +61,7 @@ class UrlshortenerController < ApplicationController
 
     flash[:success] = 'All URLs were successfully saved'
 
-    
+
     redirect_to multiurls_path(input_urls: @input_urls)
 
   end
@@ -132,7 +132,10 @@ def redirect
 
 
   def index
-    @summary = Url.all
+
+    @user = current_user
+    @user_urls = @user.urls
+    @summary = @user_urls
 
   end
 
