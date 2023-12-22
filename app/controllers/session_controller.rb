@@ -5,7 +5,7 @@ class SessionController < ApplicationController
 
     if user && user.authenticate(login_params[:password])
 
-      # if user.email_confirmed
+      if user.email_confirmed
 
 
         session[:user_id] = user.id
@@ -13,12 +13,12 @@ class SessionController < ApplicationController
         flash[:login_success] = 'Logined Successfully'
         redirect_to '/count'
 
-      # else
+      else
 
-      # flash[:login_error] = 'Please verify your email before logging in.'
-      # redirect_to '/logins'
+      flash[:login_error] = 'Please verify your email before logging in.'
+      redirect_to '/logins'
 
-      # end
+      end
     else
       flash[:login_error] = 'invalid credentials please check the Email and Password'
       redirect_to '/logins'
