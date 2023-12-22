@@ -45,10 +45,10 @@ class HomeController < ApplicationController
   def confirm_email
     puts("++++++++++++++++++:::::::::::")
     user = User.find_by(confirmation_token: params[:token])
-    puts(user.password_digest)
-    puts(user.username)
-    puts(user.confirmation_token)
-    puts(user.email)
+    # # puts(user.password_digest)
+    # puts(user.username)
+    # puts(user.confirmation_token)
+    # puts(user.email)
 
 
     if user
