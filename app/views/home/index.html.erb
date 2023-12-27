@@ -51,14 +51,14 @@ a:hover{
   </div>
   <div class="body">
     <% if flash[:notice].present? %>
-    <h5 class="alert alert-success show" id="success"><%= flash[:notice] %></h5>
+    <h5 class="alert alert-success show" id="logout"><%= flash[:notice] %></h5>
 
     <% end %>
     <% if flash[:alert].present? %>
     <%# <script>
       alert("<%= j flash[:alert] %>")
      <%# </script>  %>
-    <h5 class="alert alert-success show" id="success"><%= flash[:alert] %></h5/>
+    <h5 class="alert alert-success show" id="alert1"><%= flash[:alert] %></h5/> 
     <% end %>
     <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
       <div class="jumbotron jumbotron-fluid bg-transparent">
@@ -89,14 +89,16 @@ a:hover{
   </div>
 </div>
 </body>
-<script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-var registerErrorDiv = document.getElementById('success');
- a
-if (registerErrorDiv) {
-  setTimeout(function() {
-    registerErrorDiv.style.opacity = '0';
-  }, 3000); 
-}
+<script>
+  $(document).ready(function() {
+
+    $('#logout').delay(5000).fadeOut('slow');
+
+    // Fade out alert message after 5 seconds (5000 milliseconds)
+
+    $('#alert1').delay(5000).fadeOut('slow');
+  });
 </script>
 </html>
