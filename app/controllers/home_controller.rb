@@ -98,13 +98,13 @@ class HomeController < ApplicationController
 
   def count
 
-    # @user = current_user
+    @user = current_user
 
-    # @user_urls = @user.urls
+    @user_urls = @user.urls
 
-    # @count = @user_urls .count
+    @count = @user_urls .count
 
-    # puts(@count)
+    puts(@count)
   end
 
 
