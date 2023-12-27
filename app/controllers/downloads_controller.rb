@@ -3,7 +3,11 @@ class DownloadsController < ApplicationController
   require 'prawn'
 
   def generate_pdf_summary
-    @urls = Url.all
+    # @urls = Url.all
+    @user = current_user
+
+    @urls = @user.urls
+
     @count = 1
     pdf = Prawn::Document.new
     pdf.text "URL Shortener Report"
