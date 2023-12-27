@@ -133,9 +133,10 @@ def redirect
 
   def index
 
-    @user = current_user
-    @user_urls = @user.urls
-    @summary = @user_urls
+    @summary = Url.all
+    # @user = current_user
+    # @user_urls = @user.urls
+    # @summary = @user_urls
 
   end
 

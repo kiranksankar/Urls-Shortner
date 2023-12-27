@@ -1,7 +1,7 @@
 class Url < ApplicationRecord
 
-  belongs_to :user
-  
+  # belongs_to :user
+
   validates :original_url, presence: true, format: { with: URI.regexp(%w[http https]), message: 'must start with http:// or https://' }
   validates :shortened_url, presence: true, uniqueness: true, format: { with: URI.regexp(%w[http https]), message: 'must start with http:// or https://' }
 
