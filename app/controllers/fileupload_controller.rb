@@ -25,7 +25,7 @@ class FileuploadController < ApplicationController
 
           unless original_url.start_with?('http://', 'https://')
 
-            flash[:error] = 'Validation failed: Original URL must start with http:// or https://'
+            flash[:error] = "Validation failed  '#{original_url}' must start with http:// or https://"
 
             redirect_to '/upload' and return
           end
@@ -52,7 +52,7 @@ class FileuploadController < ApplicationController
         end
 
         flash[:success] = 'CSV file uploaded and URLs processed successfully.'
-        
+
         redirect_to filesummary_path(imported_urls: @imported_urls)
 
       rescue StandardError => e
