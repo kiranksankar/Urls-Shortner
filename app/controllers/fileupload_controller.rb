@@ -32,16 +32,27 @@ class FileuploadController < ApplicationController
 
 
           shortened_url = generate_shortened_url(original_url)
-          puts(original_url)
-          puts(shortened_url)
 
-          Url.create!(original_url: original_url, shortened_url: shortened_url)
+          # puts(original_url)
+          # puts(shortened_url)
+
+          # Url.create!(original_url: original_url, shortened_url: shortened_url)
+
+
+
+          new_url = current_user.urls.new(original_url: original_url, shortened_url: shortened_url)
+
+          unless new_url.save
+              errors = true
+          end
+
 
           @imported_urls << { original_url: original_url, shortened_url: shortened_url }
 
         end
 
         flash[:success] = 'CSV file uploaded and URLs processed successfully.'
+        
         redirect_to filesummary_path(imported_urls: @imported_urls)
 
       rescue StandardError => e
