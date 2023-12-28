@@ -9,6 +9,7 @@ class FileuploadController < ApplicationController
 
   def create
     @imported_urls = []
+    invalid_urls = []
 
     if params[:url] && params[:url][:pdf_file].present?
 
@@ -22,13 +23,18 @@ class FileuploadController < ApplicationController
 
           next if original_url.blank?
 
-
           unless original_url.start_with?('http://', 'https://')
-
-            flash[:error] = "Validation failed  '#{original_url}' must start with http:// or https://"
-
-            redirect_to '/upload' and return
+            invalid_urls << original_url
+            next
           end
+
+
+          # unless original_url.start_with?('http://', 'https://')
+
+          #   flash[:error] = "Validation failed  '#{original_url}' must start with http:// or https://"
+
+          #   redirect_to '/upload' and return
+          # end
 
 
           shortened_url = generate_shortened_url(original_url)
@@ -49,6 +55,12 @@ class FileuploadController < ApplicationController
 
           @imported_urls << { original_url: original_url, shortened_url: shortened_url }
 
+        end
+
+        if invalid_urls.any?
+          
+          flash[:error] = "Validation failed for the following URLs: #{invalid_urls.join(', ')}. They must start with http:// or https://"
+          redirect_to filesummary_path(imported_urls: @imported_urls) and return
         end
 
         flash[:success] = 'CSV file uploaded and URLs processed successfully.'
