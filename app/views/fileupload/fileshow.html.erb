@@ -1,0 +1,148 @@
+<!-- app/views/urlshortener/display_all_urls.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>summary of urlshortener  </title>
+  <style>
+ 
+.super-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.con{
+  margin:40px 50px;
+}
+.super-table th {
+  border: 1px solid cyan;
+  padding: 20px;
+  text-align: center;
+  color: cyan;
+  
+}
+
+
+.super-table td {
+  border: 1px solid #ddd;
+  padding: 50px;
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center; 
+  /* white-space: nowrap; */
+}
+
+
+.super-table tr{
+  background-color: black;
+  color: white;
+}
+.length{
+  width: 50%;
+}
+  </style>
+</head>
+
+<body>
+  <%= render  "urlshortener/navbar" %>
+    <% if flash[:success].present? %>
+  <div class="alert fade show" id="alert">
+    <% if flash[:success].is_a?(String) %>
+      <div class="form-control">
+        <h4 style="color: red;"><%= flash[:success] %></h4>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<% if flash[:error].present? %>
+  <div class="alert fade show" id="error-alert">
+    <% if flash[:error].is_a?(String) %>
+      <div class="form-control">
+        <h4 style="color: red;"><%= flash[:error] %></h4>
+      </div>
+  </div>
+<% end %>
+<%end%>
+
+     <br>
+  <%# <center>
+  <h1>Summary of all Urls Shortened in the pdf</h1>
+
+  <div class="length">
+  <hr class="my-4">
+   
+  
+   </center>   
+   </div> %>
+
+<% if @imported_urls.present? %>
+    <table class="super-table">
+      <thead>
+        <tr>
+          
+          <th><center>Urls count</center></th>
+          <th><center>Original URL</center></th>
+          <th><center>Shortened URL</center></th>
+          <th><center> Copy the code </center></th>
+        
+        </tr>
+
+      </thead>
+      <tbody>
+        <% count = 0%>
+         <% @imported_urls.each do |url| %>
+          <tr>
+            <td><%= count += 1 %></td>
+            <td><%= url[:original_url] %></td>
+            <td><%= url[:shortened_url] %></td>
+            <td>
+            <input class="btn-primary1 form-control" type="button" value="Copy" onclick="copyText('<%= url[:shortened_url] %>')">
+          </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+  <div class="container">
+    <center>
+     <h1 style="color:white;">No URLs found</h1>
+    </center>
+    </div>
+
+  <% end %>
+  </div>
+  </body>
+  
+  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+
+<script>
+  document.getElementById('btnclick').addEventListener('click', function() {
+    window.location.href = "/upload"; 
+  });
+  
+  function copyText(shortenedUrl) {
+    var inputField = document.createElement("input");
+    document.body.appendChild(inputField);
+    inputField.setAttribute('value', shortenedUrl);
+    inputField.select();
+    document.execCommand('copy');
+    document.body.removeChild(inputField);
+    alert("Copied the text: " + shortenedUrl);
+  }
+
+  $(document).ready(function() {
+    if ($('#alert').length > 0) {
+      $('#alert').delay(3000).fadeOut('slow');
+    }
+
+    if ($('#error-alert').length > 0) {
+      $('#error-alert').delay(8000).fadeOut('slow');
+    }
+  });
+
+</script>
+
+</html>

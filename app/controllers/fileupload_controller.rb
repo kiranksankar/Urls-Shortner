@@ -58,14 +58,14 @@ class FileuploadController < ApplicationController
         end
 
         if invalid_urls.any?
-          
+
           flash[:error] = "Validation failed for the following URLs: #{invalid_urls.join(', ')}. They must start with http:// or https://"
-          redirect_to filesummary_path(imported_urls: @imported_urls) and return
+          redirect_to fileshow_path(imported_urls: @imported_urls) and return
         end
 
         flash[:success] = 'CSV file uploaded and URLs processed successfully.'
 
-        redirect_to filesummary_path(imported_urls: @imported_urls)
+        redirect_to fileshow_path(imported_urls: @imported_urls) and return
 
       rescue StandardError => e
 
@@ -89,6 +89,11 @@ class FileuploadController < ApplicationController
 
     end
 
+    def fileshow
+
+      @imported_urls = params[:imported_urls]
+
+    end
 
   private
 

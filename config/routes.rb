@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get '/filesummary', to: 'fileupload#new'
 
+  get '/fileshow', to: 'fileupload#fileshow'
+
   get '/new', to: 'urlshortener#new'
 
 
