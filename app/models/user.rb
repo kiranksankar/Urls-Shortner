@@ -22,4 +22,12 @@ class User < ApplicationRecord
   end
 
 
+  def generate_password_reset_token
+    token = SecureRandom.hex(4)
+    $global_password_reset_token = token
+
+    token
+  end
+
+
 end

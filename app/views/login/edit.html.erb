@@ -43,11 +43,18 @@
       <body>
             <div>  
             <%= render  "home/navbar1" %>
+
+             <% if flash[:error].present? %>
+  
+    <h5 class="alert alert-success show" id="success"><%= flash[:error]%></h5>
+  
+
+    <% end %>
             </div>
           
                <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
                   <div class="login-form">
-                   <form action="/verify_email" method="post">
+                   <form action="/verifyemail" method="post">
                     
                     <h5> Enter the email adress used for register to <span style="color:red;">Reset Password</span></h5>
                     <br>

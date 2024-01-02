@@ -50,6 +50,11 @@ a:hover{
    <%= render  "home/navbar1" %>
   </div>
   <div class="body">
+
+    <% if flash[:success].present? %>
+    <h5 class="alert alert-success show"><%= flash[:success] %></h5>
+
+    <%end%>
     <% if flash[:notice].present? %>
     <h5 class="alert alert-success show" id="logout"><%= flash[:notice] %></h5>
 

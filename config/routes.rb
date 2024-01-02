@@ -45,6 +45,12 @@ Rails.application.routes.draw do
   get 'generate_pdf_summary', to: 'downloads#generate_pdf_summary'
   get '/generate_User_summary', to: 'downloads#generate_User_summary'
 
+  get '/token_confirm', to: 'login#tocken_confirm'
+
+  # get '/:password', to: 'login#password'
+  get '/password', to: 'login#password', as: 'password'
+
+
 
 
   get '/url_summary', to: 'usersummmary#generate_pdf_summary'
@@ -55,6 +61,13 @@ Rails.application.routes.draw do
 
 
 
+
+
+  post '/password_reset', to: 'login#password_reset'
+
+  post '/confirmtoken', to: 'login#confirmtoken'
+
+  post '/verifyemail', to: 'login#verifyemail'
 
   post '/users' => 'home#create'
 

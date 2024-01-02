@@ -6,4 +6,10 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Confirm your email address')
   end
 
+  def password_reset_email(user,reset_token)
+    @user = user
+    @reset_code = reset_token
+    mail(to: @user.email, subject: 'Password Reset Instructions')
+  end
+
 end
