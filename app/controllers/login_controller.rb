@@ -14,12 +14,13 @@ class LoginController < ApplicationController
     puts (email)
     user = User.find_by(email: email)
 
-    $id = user.id
-    puts($id)
+
 
 
 
     if user
+      $id = user.id
+      puts($id)
       reset_token = user.generate_password_reset_token
       puts("Password reset token: #{reset_token}")
 
