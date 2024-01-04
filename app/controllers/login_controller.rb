@@ -79,7 +79,7 @@ class LoginController < ApplicationController
     puts(password)
     puts(confirm_password)
 
-    if password == confirm_password
+    if password == confirm_password && password.length >= 6
 
       user.update(password: password)
       flash[:success] ="Password chaged successfully"
@@ -87,7 +87,7 @@ class LoginController < ApplicationController
       redirect_to root_path
     else
 
-      flash[:error] ="The entered password is not same"
+      flash[:error] ="Please check the password"
       redirect_to password_path
 
 
