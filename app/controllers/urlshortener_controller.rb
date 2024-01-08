@@ -24,7 +24,7 @@ class UrlshortenerController < ApplicationController
 
     hash = Digest::MD5.hexdigest(combined)
 
-    shortened_url = "https://shorturl-oazb.onrender.com/#{hash[0, 4]}"
+    shortened_url = "https://shorturl-oazb.onrender.com/#{hash[0, 7]}"
 
     { original_url: original_url, shortened_url: shortened_url }
 

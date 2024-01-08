@@ -65,6 +65,17 @@
 <% end %>
 <%end%>
 
+<% if flash[:errors].present? %>
+  <div class="flash-errors">
+    <h2>Error:</h2>
+    <ul>
+      <% flash[:errors].each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
      <br>
   <%# <center>
   <h1>Summary of all Urls Shortened in the pdf</h1>
