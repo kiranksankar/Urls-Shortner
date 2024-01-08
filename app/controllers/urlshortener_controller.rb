@@ -70,32 +70,6 @@ end
 end
 
 
-# def pdfcreate
-
-
-#   if params[:url] && params[:url][:pdf_file].present?
-#     uploaded_file = params[:url][:pdf_file].tempfile
-
-#     begin
-#       CSV.foreach(uploaded_file, headers: false) do |row|
-#         original_url = row[0].strip # Assuming URL is in the first column of the CSV file
-#         shortened_url = generate_shortened_url(original_url)
-#         Url.create!(original_url: original_url, shortened_url: shortened_url)
-#       end
-
-#       flash[:success] = 'CSV file uploaded and URLs processed successfully.'
-#       redirect_to '/logins'
-#     rescue StandardError => e
-#       flash[:error] = "Error while processing the CSV file: #{e.message}"
-#       redirect_to "/multiurls"
-#     end
-#   else
-#     flash[:error] = 'Please select a CSV file to upload.'
-#     redirect_to root_path
-#   end
-
-
-# end
 
 def redirect
     hash = params[:shortened_url]
@@ -141,6 +115,12 @@ def redirect
   end
 
   def navbar
+
+  end
+
+  def userlist
+
+    @user = User.all
 
   end
 

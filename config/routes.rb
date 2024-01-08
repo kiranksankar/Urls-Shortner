@@ -31,7 +31,11 @@ Rails.application.routes.draw do
   get '/urlshortener', to:'urlshortener#url'
 
   get '/show', to: 'urlshortener#show'
-  get '/summary', to: 'urlshortener#index'
+
+
+  get '/urlslist', to: 'urlshortener#index'
+
+  get '/userlist', to: 'urlshortener#userlist'
 
 
   get '/navbar1', to: 'home#navbar'

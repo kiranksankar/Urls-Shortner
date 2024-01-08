@@ -1,9 +1,9 @@
-<!-- app/views/urlshortener/display_all_urls.html.erb -->
+
 <!DOCTYPE html>
 <html>
 <head>
   
-  <title>summary of urlshortener  </title>
+  <title>Users list  </title>
   <style>
  body {
       font-family: Arial, sans-serif;
@@ -65,14 +65,13 @@
  <br>
     <br>
   <center>
-  <h1 class="white" >Urls Shortened Untill Now..</h1>
+  <h1 class="white">All Users List</h1>
 
   <div class="length white">
   <hr class="my-4 white">
 
-
-     <div class="btn">
-      <a href="generate_pdf_summary">
+   <div class="btn">
+      <a href="/generate_User_summary">
         <p>
           <i class="fas fa-download"></i>
           Click here to download
@@ -80,32 +79,31 @@
       </a>
 
     </div>
-  
+
 
    </center>   
    </div>
 <div class="con">
  
 
-  <% if @summary.any? %>
+  <% if @user.any? %>
     <table class="super-table">
       <thead>
         <tr>
           
-          <th><center>Urls count</center></th>
-          <th><center>Original URL</center></th>
-          <th><center>Shortened URL</center></th>
+          <th><center>User id</center></th>
+          <th><center>User Name</center></th>
+          <th><center>User Mail id</center></th>
         
         </tr>
 
       </thead>
       <tbody>
-        <% count = 0%>
-        <% @summary.each do |url| %>
+        <% @user.each do |user| %>
           <tr>
-            <td><%= count += 1 %></td>
-            <td><%= url.original_url %></td>
-            <td><%= url.shortened_url %></td>
+            <td><%= user.id %></td>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
           </tr>
         <% end %>
       </tbody>
@@ -113,7 +111,7 @@
   <% else %>
   <div class="container">
     <center>
-    <h2>No URLs found.</h2>
+    <h2>No User Found</h2>
     </centerra>
     </div>
 

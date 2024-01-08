@@ -1,4 +1,37 @@
-<nav class="navbar navbar-dark bg-dark">
+
+
+<style>
+
+  .header11{
+    font-family: Arial, sans-serif;
+  }
+  .space{
+      padding-left: 10px;
+  }
+ 
+.dropdown-toggle {
+  color: red; 
+  
+}
+
+.dropdown-menu {
+  background-color: white; 
+  border: 1px solid #ccc; 
+
+}
+
+.dropdown-item {
+  color: black; 
+  background-color: white; 
+}
+
+.dropdown-item:hover {
+  background-color: black; 
+  color: white;
+}
+
+  </style>
+<nav class="navbar navbar-dark bg-dark header11">
   <div class="container-fluid">
     <div class="navbar-brand">
       <a class="nav-link" href="/count">
@@ -13,17 +46,31 @@
             <h4 class="space" >Home</h4>
           </a>
         </li>
-          <%# <li class="nav-item">
-            <a class="nav-link" href="/about">
-              <h4 class="space"  >About</h4>
-            </a>
-          </li> %>
+
+
+        
+
         <li class="nav-item">
-          <a class="nav-link" href="/summary">
-            <h4 class="space"  >Summary</h4>
+          <a class="nav-link" href="/count">
+            <h4 class="space">Summary</h4>
           </a>
         </li>
 
+
+        <li class="nav-item dropdown">
+            
+            <a class="nav-link dropdown-toggle d-inline-flex align-items-center" href="#" id="downloadsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <%# <h4 class="space">Download</h4> %> <h4 class="space">  View </h4>
+            </a>
+          
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/urlslist">Url shortened list</a></li>
+              <li><a class="dropdown-item" href="/userlist">User List</a></li>
+              
+            </ul>
+          </li>
+
+          
         <li class="nav-item">
           <a class="nav-link" href="/logout">
             <h4 class="space"  >Logout</h4>
@@ -33,3 +80,23 @@
     </div>
   </div>
 </nav>
+
+<script>
+   $(document).ready(function() {
+    $('.dropdown-toggle').hover(function() {
+      if (!$(this).hasClass('show')) {
+        $(this).addClass('show');
+        $(this).attr('aria-expanded', true);
+        $(this).siblings('.dropdown-menu').addClass('show');
+        $(this).siblings('.dropdown-menu').css('display', 'block');
+      }
+    });
+
+    $('.dropdown-menu').mouseleave(function() {
+      $('.dropdown-toggle').removeClass('show');
+      $('.dropdown-toggle').attr('aria-expanded', false);
+      $('.dropdown-menu').removeClass('show');
+      $('.dropdown-menu').css('display', 'none');
+    });
+  });
+</script>
