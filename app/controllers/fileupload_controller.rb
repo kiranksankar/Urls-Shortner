@@ -48,9 +48,9 @@ class FileuploadController < ApplicationController
 
           new_url = current_user.urls.new(original_url: original_url, shortened_url: shortened_url)
 
-          unless new_url.save
-              errors = true
-          end
+          # unless new_url.save
+          #     errors = true
+          # end
           unless new_url.save
             errors = true
             # Flash the error messages
