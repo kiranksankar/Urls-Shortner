@@ -5,7 +5,17 @@
   
   <title>summary of urlshortener  </title>
   <style>
- 
+  body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      background-image: url('<%= asset_path('pexels-tofroscom-257853.jpg') %>');
+      margin: 0;
+      background-size: cover; 
+      background-position: center center; 
+     
+      font-family: Arial, sans-serif;
+  
+    }
 .super-table {
   border-collapse: collapse;
   width: 100%;
@@ -15,17 +25,18 @@
   margin:40px 50px;
 }
 .super-table th {
-  border: 1px solid cyan;
+  border: 3px solid cyan;
   padding: 20px;
   text-align: center;
-  color: cyan;
+  color: black;
   
 }
 
 
 .super-table td {
-  border: 1px solid #ddd;
-  padding: 50px;
+  color:red;
+  border: 2px solid black;
+  padding: 20px;
   max-width: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -35,12 +46,38 @@
 
 
 .super-table tr{
-  background-color: black;
+  background-color: white;
   color: white;
+}
+.white{
+    color:white;
 }
 .length{
   width: 50%;
 }
+.hoveers {
+    position: relative;
+    display: inline-block;
+  }
+ .fa-copy:hover::before {
+    content: "Copy the link";
+    position: relative;
+    margin-left: 0px;
+    padding: 5px 8px;
+    background-color: red;
+    color: black;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 1;
+  }
+
+  a 
+  {
+    color : red;
+    text-decoration : none;
+
+  }
+  
   </style>
 </head>
 
@@ -65,6 +102,7 @@
 <% end %>
 <%end%>
 
+
 <% if flash[:errors].present? %>
   <div class="flash-errors">
     <h2>Error:</h2>
@@ -86,8 +124,15 @@
   
    </center>   
    </div> %>
+<div class="con">
 
+
+   <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+
+   <br><br>>
 <% if @imported_urls.present? %>
+
+
     <table class="super-table">
       <thead>
         <tr>
@@ -95,7 +140,7 @@
           <th><center>Urls count</center></th>
           <th><center>Original URL</center></th>
           <th><center>Shortened URL</center></th>
-          <th><center> Copy the code </center></th>
+         
         
         </tr>
 
@@ -105,15 +150,13 @@
          <% @imported_urls.each do |url| %>
           <tr>
             <td><%= count += 1 %></td>
-            <td><%= url[:original_url] %></td>
-            <td><%= url[:shortened_url] %></td>
-            <td>
-            <input class="btn-primary1 form-control" type="button" value="Copy" onclick="copyText('<%= url[:shortened_url] %>')">
-          </td>
+            <td> <a href = <%= url[:original_url] %> > <%= url[:original_url] %> </a></td>
+            <td > <a href= <%= url[:shortened_url] %>  >    <p class="hoveers"><%= url[:shortened_url] %>     </p>    </a>   <span style="margin-left:20px;"><i class="fa fa-copy" class="btn-primary1" type="button"  onclick="copyText('<%= url[:shortened_url] %>')"></i> </span></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+   
   <% else %>
   <div class="container">
     <center>
@@ -122,6 +165,7 @@
     </div>
 
   <% end %>
+  </div>
   </div>
   </body>
   
