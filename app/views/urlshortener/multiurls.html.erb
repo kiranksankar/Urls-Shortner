@@ -22,7 +22,7 @@
       font-family: Arial, sans-serif;
   
     }
-    .url-container input{
+    /* .url-container input{
       width: 100%;
       height : 80px;
       margin-top: 5px;
@@ -30,7 +30,7 @@
       font-size: 16px;
       border-radius:10px;
      
-    }
+    } */
     .url-container a {
       word-break: break-all;
       display: block;
@@ -40,6 +40,27 @@
     {
       color:red;
     }
+    .white-box {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 25px;
+      border-radius: 5px;
+    }
+    .fa-copy{
+    color: red;
+    margin-top : -20px;
+    margin-left: 0px;
+    border-radius: 3px;
+    font-size: 22px;
+    float: right;
+  }
+  a 
+  {
+    color : red;
+    text-decoration : none;
+
+  }
+
         </style>
 
 </head>
@@ -53,19 +74,19 @@
         <% @input_urls.each do |url| %>
           <div class="url-container">
             <label for="originalUrl">Original URL:</label>
-            <input type="text" id="originalUrl" value="<%= url[:original_url] %>" readonly>
+            <br>
+            <br>
+                <div class="white-box form-control" id="originalUrl"><%= url[:original_url] %>
+                </div>
+                
           </div>
 
           <div class="url-container">
             <label for="shortUrl"><p style="color:yellow;">Short URL:</p></label>
-            <div class="row">
-              <div class="col-10">
-                <input type="text" id="shortUrl" value="<%= url[:shortened_url] %>" readonly>
-              </div>
-              <div class="col-2">
-                <input class="btn-primary1" type="button" value="Copy" onclick="copyText('<%= url[:shortened_url] %>')">
-              </div>
+            <div class="white-box form-control" id="shortUrl">
+              <a href = <%= url[:shortened_url] %> target="_blank" ><%= url[:shortened_url] %> </a> <span><i class="fa fa-copy" type="button" onclick="copyText('<%= url[:shortened_url] %>')"></i></span>
             </div>
+
           </div>
         <% end %>
       <% else %>

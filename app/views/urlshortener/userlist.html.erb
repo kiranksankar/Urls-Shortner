@@ -75,8 +75,20 @@ a
 
   <div class="length white">
   <hr class="my-4 white">
+   </center>   
+   </div>
+   
+<div class="con">
+  <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+  <br>
+  <br>
+  <br>
+ 
 
-   <div class="btn">
+  <% if @user.any? %>
+  <center>
+
+  <div class="btn">
       <a href="/generate_User_summary">
         <h4>
           <i class="fas fa-download"></i>
@@ -85,14 +97,8 @@ a
       </a>
 
     </div>
-
-
-   </center>   
-   </div>
-<div class="con">
- 
-
-  <% if @user.any? %>
+  
+  </center>
     <table class="super-table">
       <thead>
         <tr>
@@ -126,4 +132,12 @@ a
   
   
 </body>
+
+<script>
+  document.getElementById('btnclick').addEventListener('click', function() {
+    window.location.href = "/upload"; 
+  });
+</script>
+
+
 </html>
