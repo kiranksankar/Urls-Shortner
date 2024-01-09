@@ -55,6 +55,28 @@
 .length{
   width: 50%;
 }
+.hoveers {
+    position: relative;
+    display: inline-block;
+  }
+ .fa-copy:hover::before {
+    content: "Copy the link";
+    position: relative;
+    margin-left: 0px;
+    padding: 5px 8px;
+    background-color: red;
+    color: black;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 1;
+  }
+
+  a 
+  {
+    color : red;
+    text-decoration : none;
+
+  }
   </style>
 </head>
 
@@ -71,6 +93,17 @@
   <hr class="my-4 white">
 
 
+  
+  
+
+   </center>   
+   </div>
+<div class="con">
+ 
+
+  <% if @summary.any? %>
+<center>
+
      <div class="btn">
       <a href="generate_pdf_summary">
         <p>
@@ -83,14 +116,7 @@
       </a>
 
     </div>
-  
-
-   </center>   
-   </div>
-<div class="con">
- 
-
-  <% if @summary.any? %>
+    </center>
     <table class="super-table">
       <thead>
         <tr>
@@ -107,8 +133,10 @@
         <% @summary.each do |url| %>
           <tr>
             <td><%= count += 1 %></td>
-            <td><%= url.original_url %></td>
-            <td><%= url.shortened_url %></td>
+            <td> <a href = <%= url.original_url %>  target="_blank"> <%= url.original_url %> </td>
+            <%# <td><%= url.shortened_url %>
+            <td > <a href= <%= url[:shortened_url] %>  target="_blank">    <p class="hoveers"><%= url[:shortened_url] %>     </p>    </a>   <span style="margin-left:20px;"><i class="fa fa-copy" class="btn-primary1" type="button"  onclick="copyText('<%= url[:shortened_url] %>')"></i> </span></td>
+
           </tr>
         <% end %>
       </tbody>
@@ -125,4 +153,33 @@
   
   
 </body>
+
+<script>
+  document.getElementById('btnclick').addEventListener('click', function() {
+    window.location.href = "/upload"; 
+  });
+  
+  function copyText(shortenedUrl) {
+    var inputField = document.createElement("input");
+    document.body.appendChild(inputField);
+    inputField.setAttribute('value', shortenedUrl);
+    inputField.select();
+    document.execCommand('copy');
+    document.body.removeChild(inputField);
+    alert("Copied the text: " + shortenedUrl);
+  }
+
+  $(document).ready(function() {
+    if ($('#alert').length > 0) {
+      $('#alert').delay(3000).fadeOut('slow');
+    }
+
+    if ($('#error-alert').length > 0) {
+      $('#error-alert').delay(8000).fadeOut('slow');
+    }
+  });
+
+</script>
+
+
 </html>

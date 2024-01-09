@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   get '/multiurls', to: 'urlshortener#multiurls'
   get '/download', to: 'urlshortener#download'
 
+
+  get '/upload_download', to: 'fileupload#csvfileupload_download'
   get 'generate_pdf_summary', to: 'downloads#generate_pdf_summary'
   get '/generate_User_summary', to: 'downloads#generate_User_summary'
 

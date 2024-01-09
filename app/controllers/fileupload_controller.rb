@@ -1,6 +1,7 @@
 class FileuploadController < ApplicationController
   require 'csv'
-
+  require 'prawn'
+  
   def upload
 
     @url = Url.new
@@ -103,6 +104,32 @@ class FileuploadController < ApplicationController
 
       @imported_urls = $imported_urls
 
+    end
+
+    def csvfileupload_download
+
+
+      file = $imported_urls
+      @count = 1
+      pdf = Prawn::Document.new
+      pdf.text "Users List", size: 18, style: :bold
+      pdf.move_down 10
+      pdf.text "\n"
+
+      file.each do |user|
+        pdf.text "<b>Sl.no : #{@count}</b>", inline_format: true
+        pdf.text "\n"
+        pdf.text "<b><u>Original Url : </u></b>
+
+        #{user[:original_url]}", inline_format: true
+        pdf.text "\n"
+        pdf.text "<b><u>Shortened Url: </u></b>
+
+        #{user[:shortened_url]}", inline_format: true
+        pdf.text "\n"
+        @count+=1
+      end
+      send_data pdf.render, filename: "Csv_file_upload#{Date.today}.pdf", type: 'application/pdf'
     end
 
   private
