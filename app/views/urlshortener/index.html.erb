@@ -79,14 +79,15 @@
 
   }
  .pagination-container {
-  /* margin-top: 20px; */
+  /* background-color:red; */
   text-align: center;
+
 }
 
 .pagination {
   display: inline-block;
-  padding-left: 150px;
-  margin-bottom: 50px ;
+  /* padding-left: 150px; */
+  /* margin-bottom: 50px ; */
   border-radius: 4px;
 }
 
@@ -102,7 +103,7 @@
   padding: 6px 12px;
   color: red; 
   border: 1px solid red; 
-  border-radius: 20px;
+  border-radius: 2px;
   text-decoration: none;
   background-color: none;
 }
@@ -118,6 +119,10 @@
 .btn
 {
   float:right;
+  color: white;
+}
+.btn:hover{
+  color: white;
 }
   </style>
 </head>
@@ -141,37 +146,49 @@
    </center>   
    </div>
 <div class="con">
+  <div class="row">
+        <div class="col-md-2">
+            <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+        </div>
 
-  <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
-  <br>
-  <br>
-  <br>
- 
+        <div class="col-md-8">
+          
+              <div class="pagination-container">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-center">
+                      <%= will_paginate @summary, renderer: WillPaginate::ActionView::LinkRenderer, class: 'btn' %>
+                  </ul>
+                </nav>
+              </div>
+         
+
+        </div>
+
+        <div class="col-md-2">
+
+              <div class="btn">
+                    <a href="generate_pdf_summary">
+                      <p>
+                        <h5>
+                          
+                          <i style="color:red;" class="fas fa-download"> Click here to download</i>
+                    
+                        </h5>
+                        </p>
+                      </a>
+
+              </div>
+
+        </div>
+        </div>
 
   <% if @summary.any? %>
 <%# <center> %>
 
-     <div class="btn">
-      <a href="generate_pdf_summary">
-        <p>
-          <h4>
-            
-          <i style="color:red;" class="fas fa-download"> Click here to download</i>
-          
-        </h4>
-        </p>
-      </a>
-
-    </div>
+     
     <%# </center> %>
 
-     <div class="pagination-container">
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      <%= will_paginate @summary, renderer: WillPaginate::ActionView::LinkRenderer, class: 'page-link' %>
-    </ul>
-  </nav>
-</div>
+     
 
 
     <table class="super-table">
@@ -190,7 +207,6 @@
           <tr>
             <td><%= (params[:page].to_i - 1) * @user_urls.limit_value + index + 1 %></td>
             <td> <a href = <%= url.original_url %>  target="_blank"> <%= url.original_url %> </td>
-            <%# <td><%= url.shortened_url %>
             <td > <a href= <%= url[:shortened_url] %>  target="_blank">    <p class="hoveers"><%= url[:shortened_url] %>     </p>    </a>   <span style="margin-left:20px;"><i class="fa fa-copy" class="btn-primary1" type="button"  onclick="copyText('<%= url[:shortened_url] %>')"></i> </span></td>
 
           </tr>

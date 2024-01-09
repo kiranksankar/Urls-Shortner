@@ -61,6 +61,14 @@ a
     text-decoration : none;
 
   }
+  .btn
+{
+  float:right;
+  color: white;
+}
+.btn:hover{
+  color: white;
+}
   </style>
 </head>
 
@@ -75,30 +83,51 @@ a
 
   <div class="length white">
   <hr class="my-4 white">
+
+   
+
+
    </center>   
    </div>
-   
 <div class="con">
-  <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
-  <br>
-  <br>
-  <br>
- 
 
-  <% if @user.any? %>
-  <center>
 
-  <div class="btn">
+  <div class="row">
+    <div class="col-sm-3">
+      <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+    </div>
+
+    <div class="col-sm-6">
+    
+    
+    </div>
+
+
+    <div class="col-sm-3">
+
+     <div class="btn">
       <a href="/generate_User_summary">
-        <h4>
+        <h5>
           <i class="fas fa-download"></i>
           Click here to download
-        </h4>
+        </h5>
       </a>
 
     </div>
+    
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+   
+
   
-  </center>
+ 
+
+  <% if @user.any? %>
+
     <table class="super-table">
       <thead>
         <tr>
@@ -137,7 +166,6 @@ a
   document.getElementById('btnclick').addEventListener('click', function() {
     window.location.href = "/upload"; 
   });
-</script>
 
-
+  </script>
 </html>
