@@ -79,3 +79,6 @@ gem 'wkhtmltopdf-binary'
 
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
+
+gem 'will_paginate'
+

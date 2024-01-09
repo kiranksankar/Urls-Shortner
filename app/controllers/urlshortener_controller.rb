@@ -1,6 +1,6 @@
 class UrlshortenerController < ApplicationController
 
-
+  require 'will_paginate/array'
 
   def url
 
@@ -109,7 +109,8 @@ def redirect
 
     # @summary = Url.all
     @user = current_user
-    @user_urls = @user.urls
+    # @user_urls = @user.urls
+    @user_urls = @user.urls.paginate(page: params[:page], per_page: 10)
     @summary = @user_urls
 
   end
