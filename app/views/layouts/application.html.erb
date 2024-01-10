@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Url-shortener</title>
+    <title>Url-shortener </title>
+   <link rel="icon" href="<%= asset_path('logo.png') %>" type="image/png">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +12,131 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
+
+
+
+  <style>
+
+
+    .super-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+.super-table th {
+  border: 3px solid cyan;
+  padding: 20px;
+  text-align: center;
+  color: black;
+  
+}
+
+
+.super-table td {
+  color:red;
+  border: 2px solid black;
+  padding: 20px;
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center; 
+  /* white-space: nowrap; */
+}
+
+
+.super-table tr{
+  background-color: white;
+  color: white;
+}
+
+      .header11{
+    font-family: Arial, sans-serif;
+  }
+  .space{
+      padding-left: 10px;
+  }
+ 
+.dropdown-toggle {
+  color: red; 
+  
+}
+
+.dropdown-menu {
+  background-color: white; 
+  border: 1px solid #ccc; 
+
+}
+
+.dropdown-item {
+  color: black; 
+  background-color: white; 
+}
+
+.dropdown-item:hover {
+  background-color: black; 
+  color: white;
+}
+
+.hoveers {
+    position: relative;
+    display: inline-block;
+  }
+ .fa-copy:hover::before {
+    content: "Copy the link";
+    position: relative;
+    margin-left: 0px;
+    padding: 5px 8px;
+    background-color: red;
+    color: black;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 1;
+  }
+
+  a 
+  {
+    color : red;
+    text-decoration : none;
+
+  }
+ .pagination-container {
+  /* background-color:red; */
+  text-align: center;
+
+}
+
+.pagination {
+  display: inline-block;
+  /* padding-left: 150px; */
+  /* margin-bottom: 50px ; */
+  border-radius: 4px;
+}
+
+.pagination li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.pagination a,
+.pagination span {
+  display: inline-block;
+  background-color: black;
+  padding: 6px 12px;
+  color: red; 
+  border: 1px solid red; 
+  border-radius: 2px;
+  text-decoration: none;
+  background-color: none;
+}
+
+.pagination a:hover,
+.pagination span:hover {
+  background-color: white; 
+  color: black; 
+}
+
+  </style>
 
   <body>
     <%= yield %>
