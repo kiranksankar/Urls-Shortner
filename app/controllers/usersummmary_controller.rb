@@ -1,4 +1,0 @@
-class UsersummmaryController < ApplicationController
-
-
-  end
