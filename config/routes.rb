@@ -53,14 +53,24 @@ Rails.application.routes.draw do
 
   get '/token_confirm', to: 'login#tocken_confirm'
 
+
+
+  get '/details', to: 'urlreports#details'
+  get '/urlsummary', to: 'urlreports#summary'
+
+
+  get '/dowload_details', to: 'urlreports#dowload_details'
+
+
+
   # get '/:password', to: 'login#password'
   get '/password', to: 'login#password', as: 'password'
 
 
 
 
-  get '/url_summary', to: 'usersummmary#generate_pdf_summary'
-  get '/user_summary', to: 'usersummmary#generate_User_summary'
+  # get '/url_summary', to: 'usersummmary#generate_pdf_summary'
+  # get '/user_summary', to: 'usersummmary#generate_User_summary'
 
   get '/:shortened_url', to: 'urlshortener#redirect', as: 'redirect'
 

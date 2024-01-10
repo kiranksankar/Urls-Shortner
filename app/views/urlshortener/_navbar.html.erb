@@ -50,11 +50,18 @@
 
         
 
-        <li class="nav-item">
-          <a class="nav-link" href="/count">
-            <h4 class="space">Summary</h4>
-          </a>
-        </li>
+        <li class="nav-item dropdown">
+            
+            <a class="nav-link dropdown-toggle d-inline-flex align-items-center" id="reports" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <%# <h4 class="space">Download</h4> %> <h4 class="space">  Reports </h4>
+            </a>
+          
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/urlsummary">Summary </a></li>
+              <li><a class="dropdown-item" href="/details"> Details</a></li>
+              
+            </ul>
+          </li>
 
 
         <li class="nav-item dropdown">
@@ -92,7 +99,7 @@
       }
     });
 
-    $('.dropdown-menu').mouseleave(function() {
+    $('.nav-item').mouseleave(function() {
       $('.dropdown-toggle').removeClass('show');
       $('.dropdown-toggle').attr('aria-expanded', false);
       $('.dropdown-menu').removeClass('show');

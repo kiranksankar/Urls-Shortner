@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>summary of urlshortener  </title>
+  <style>
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      background-image: url('<%= asset_path('pexels-tofroscom-257853.jpg') %>');
+      margin: 0;
+      background-size: cover; 
+      background-position: center center; 
+     
+      font-family: Arial, sans-serif;
+  
+    }
+    .white{
+    color:white;
+    }
+    .length{
+    width: 50%;
+    }
+.super-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.con{
+  margin:40px 50px;
+}
+.super-table th {
+  border: 3px solid cyan;
+  padding: 20px;
+  text-align: center;
+  color: black;
+  
+}
+
+
+.super-table td {
+  color:red;
+  border: 2px solid white;
+  padding: 20px;
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center; 
+  white-space: nowrap;
+}
+
+
+.super-table tr{
+  background-color: black;
+  color: white;
+}
+.con{
+  margin:40px 100px;
+}
+a
+{
+    color:red;
+    text-decoration:none;
+}
+a:hover{
+    color: yellow;
+}
+
+  </style>
+</head>
+
+<body>
+  <%= render  "urlshortener/navbar" %>
+ 
+
+    <br>
+    <br>
+  <center>
+  <h1 class="white" >Detailed Report</h1>
+
+  <div class="length white">
+  <hr class="my-4 white">
+   </center>   
+   </div>
+
+
+<div class="con">
+
+
+    <div class="row">
+        <div class="col-md-2">
+            <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+        </div>
+
+        <div class="col-md-8">
+          
+              
+         
+
+        </div>
+
+        <div class="col-md-2">
+
+              <div class="btn">
+                    <a href="/dowload_details">
+                      <p>
+                        <h5>
+                          
+                          <i style="color:red;" class="fas fa-download"> Click here to download</i>
+                    
+                        </h5>
+                        </p>
+                      </a>
+
+              </div>
+
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+
+  <table class="super-table">
+      <tbody>
+
+
+         <tr>
+            <td style="color:white">User id</td>
+            <td> <%= @user.id%></td>
+          </tr>
+
+          <tr>
+            <td style="color:white">User Name</td>
+            <td> <%= @user.username%></td>
+          </tr>
+
+          <tr>
+            <td style="color:white">Email</td>
+            <td> <%= @user.email%></td>
+          </tr>
+
+          <tr>
+            <td style="color:white">Total URLS shortened</td>
+            <td> <%= @user.urls.count%></td>
+          </tr>
+
+          <tr>
+            <td style="color:white"> First Url shortened</td>
+            <td> <a href= <%= @first%> target="_blank"> <%= @first%></a> </td>
+          </tr>
+
+
+          <tr>
+            <td style="color:white"> Last Url shortened</td>
+            <td> <a href= <%= @last%> target="_blank">  <%= @last%> </a> </td>
+          </tr>
+
+
+          <tr>
+            <td style="color:white"> Most shortened Url</td>
+            <td> <a href = "<%= @most_used%>"  target="_blank">   <%= @most_used%> </a> <span style="color:white;"> , count  (<%= @most_count%>) </span></td>
+          </tr>
+
+         <tr>
+            <td style="color:white"> Least shortened Url</td>
+            <td> <a href = <%= @least_used%> target="_blank"> <%= @least_used%> <span style="color:white;"> , count  (<%= @least_count%>) </span></td>
+          </tr>
+
+
+          <tr>
+            <td style="color:white"> Download the All urls Shortened</td>
+            <td> <a href="/generate_pdf_summary"> Download the Urls List</a></td>
+          </tr>
+
+          <tr>
+            <td style="color:white"> Download the All Users List</td>
+            <td> <a href="/generate_User_summary"> Download the Urls List</a></td>
+          </tr>
+
+
+
+      </tbody>
+    </table>
+
+</div>
+
+</body>
+
+<script>
+
+    document.getElementById('btnclick').addEventListener('click', function() {
+    window.location.href = "/upload"; 
+  });
+</script>
+</html>
