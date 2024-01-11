@@ -16,46 +16,14 @@
       font-family: Arial, sans-serif;
   
     }
+   
     .white{
     color:white;
     }
     .length{
     width: 50%;
     }
-.super-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 50px;
-}
 
-.con{
-  margin:40px 50px;
-}
-.super-table th {
-  border: 3px solid cyan;
-  padding: 20px;
-  text-align: center;
-  color: black;
-  
-}
-
-
-.super-table td {
-  color:red;
-  border: 2px solid white;
-  padding: 20px;
-  max-width: 50px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center; 
-  white-space: nowrap;
-}
-
-
-.super-table tr{
-  background-color: black;
-  color: white;
-}
 .con{
   margin:40px 100px;
 }
@@ -65,7 +33,11 @@ a
     text-decoration:none;
 }
 a:hover{
-    color: yellow;
+    color: blue;
+}
+.btn
+{
+  float: right;
 }
 
   </style>
@@ -78,7 +50,7 @@ a:hover{
     <br>
     <br>
   <center>
-  <h1 class="white" >Detailed Report</h1>
+  <h1 class="white" >Detailes of <span style="color:red;"><%= @user.username.upcase%> </span></h1>
 
   <div class="length white">
   <hr class="my-4 white">
@@ -128,58 +100,70 @@ a:hover{
 
 
          <tr>
-            <td style="color:white">User id</td>
+            <td>User id</td>
             <td> <%= @user.id%></td>
           </tr>
 
           <tr>
-            <td style="color:white">User Name</td>
+            <td>User Name</td>
             <td> <%= @user.username%></td>
           </tr>
 
           <tr>
-            <td style="color:white">Email</td>
+            <td>Email</td>
             <td> <%= @user.email%></td>
           </tr>
 
           <tr>
-            <td style="color:white">Total URLS shortened</td>
+            <td>Total URLS shortened</td>
             <td> <%= @user.urls.count%></td>
           </tr>
-
+              <% if @urls.any?%>
           <tr>
-            <td style="color:white"> First Url shortened</td>
+            <td> First Url shortened</td>
             <td> <a href= <%= @first%> target="_blank"> <%= @first%></a> </td>
           </tr>
 
 
           <tr>
-            <td style="color:white"> Last Url shortened</td>
+            <td> Last Url shortened</td>
             <td> <a href= <%= @last%> target="_blank">  <%= @last%> </a> </td>
           </tr>
 
 
           <tr>
-            <td style="color:white"> Most shortened Url</td>
+            <td> Most shortened Url</td>
             <td> <a href = "<%= @most_used%>"  target="_blank">   <%= @most_used%> </a> <span style="color:white;"> , count  (<%= @most_count%>) </span></td>
           </tr>
 
          <tr>
-            <td style="color:white"> Least shortened Url</td>
+            <td> Least shortened Url</td>
             <td> <a href = <%= @least_used%> target="_blank"> <%= @least_used%> <span style="color:white;"> , count  (<%= @least_count%>) </span></td>
           </tr>
-
+        
 
           <tr>
-            <td style="color:white"> Download the All urls Shortened</td>
+            <td> Download the All urls Shortened</td>
             <td> <a href="/generate_pdf_summary"> Download the Urls List</a></td>
           </tr>
 
           <tr>
-            <td style="color:white"> Download the All Users List</td>
+            <td> Download the All Users List</td>
             <td> <a href="/generate_User_summary"> Download the Urls List</a></td>
           </tr>
 
+
+        <% else %>
+        <div>
+        <center>
+
+        <h1 style = "color:red;" class="form-control">  No urls shortened yet now </h1>
+
+        </center>
+        <br>
+        <br>
+        </div>
+        <% end %>
 
 
       </tbody>

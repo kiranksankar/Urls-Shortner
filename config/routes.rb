@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   get '/token_confirm', to: 'login#tocken_confirm'
 
 
+  get '/most_used_url_details' => 'urlreports#most_used_url_details'
+
+
 
   get '/details', to: 'urlreports#details'
   get '/urlsummary', to: 'urlreports#summary'
@@ -103,7 +106,7 @@ end
   # get 'downloads/summary_report', to: 'downloads#summary_report', as: :downloads_summary_report
   # delete '/logout', to: 'sessions#destroy'
 
-  # resources :urlshortener do
+  # resources :urlshortener doyellow
   #   collection do
   #     get 'generate_pdf_summary'
   #   end

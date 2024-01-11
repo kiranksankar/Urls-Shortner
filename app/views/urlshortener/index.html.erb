@@ -116,7 +116,7 @@
       <tbody>
         <% @summary.each_with_index do |url, index| %>
           <tr>
-            <td><%= (params[:page].to_i - 1) * @user_urls.limit_value + index + 1 %></td>
+            <td><%= (@user_urls.current_page - 1) * @user_urls.limit_value + index + 1 %></td>
             <td> <a href = <%= url.original_url %>  target="_blank"> <%= url.original_url %> </td>
             <td > <a href= <%= url[:shortened_url] %>  target="_blank">    <p class="hoveers"><%= url[:shortened_url] %>     </p>    </a>   <span style="margin-left:20px;"><i class="fa fa-copy" class="btn-primary1" type="button"  onclick="copyText('<%= url[:shortened_url] %>')"></i> </span></td>
 

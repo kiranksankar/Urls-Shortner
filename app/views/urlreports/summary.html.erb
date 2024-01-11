@@ -16,12 +16,28 @@
       font-family: Arial, sans-serif;
   
     }
+   
     .white{
     color:white;
     }
     .length{
     width: 50%;
-    }
+   }
+.con{
+  margin:40px 100px;
+}
+a
+{
+    color:red;
+    text-decoration:none;
+}
+a:hover{
+    color: blue;
+}
+.btn
+{
+  float: right;
+}
     
 
   </style>
@@ -34,13 +50,168 @@
  <br>
     <br>
   <center>
-  <h1 class="white" >Summary Report</h1>
+  <h1 class="white">Summary report of <span style="color:red;"><%= @user.username.upcase%> </span></h1>
 
   <div class="length white">
   <hr class="my-4 white">
    </center>   
    </div>
 
+<div class="con">
+
+
+    <div class="row">
+        <div class="col-md-2">
+            <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+        </div>
+
+        <div class="col-md-8">
+          
+              
+         
+
+        </div>
+
+        <div class="col-md-2">
+
+              <div class="btn">
+                    <a href="/dowload_details">
+                      <p>
+                        <h5>
+                          
+                          <%# <i style="color:red;" class="fas fa-download"> Click here to download</i> %>
+                    
+                        </h5>
+                        </p>
+                      </a>
+
+              </div>
+
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h3 style="color:white; margin-bottom:30px;">
+          User Details : 
+        </h3>
+
+  <table class="super-table">
+      <tbody>
+
+
+         <tr>
+            <td>User id</td>
+            <td> <%= @user.id%></td>
+          </tr>
+
+          <tr>
+            <td>User Name</td>
+            <td> <%= @user.username%></td>
+          </tr>
+
+          <tr>
+            <td>Email</td>
+            <td> <%= @user.email%></td>
+          </tr>
+
+          <tr>
+            <td>Total URLS shortened</td>
+            <td> <%= @user.urls.count%></td>
+          </tr>
+
+
+      </tbody>
+    </table>
+
+
+</div>
+
+<div class="con">
+
+  <h3 style="color:white; margin-bottom:30px;">
+        URL shortened Most Times :   <a href = "<%= @most_used%>"  target="_blank">   <%= @most_used%> </a> <span style="color:white;"> <b>, count  (<%= @most_count%>) </b></span>
+  </h3>
+  <div class="row">
+    <div class="col-md-3">
+    <h4 style="color:white;  margin-bottom:30px;"> Shortened Urls for above url : </h4>
+    </div>
+
+     <div class="col-md-6">
+<%#           
+              <div class="pagination-container">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-center">
+                      <%= will_paginate @urls_paginate, renderer: WillPaginate::ActionView::LinkRenderer %>
+                  <%# </ul> %>
+                <%# </nav> %>
+              <%# </div> %> 
+         
+
+        </div>
+
+    <div class = "col-md-3">
+      
+      <div class="btn">
+
+          <a href="/most_used_url_details">
+            <p>
+              <h5>
+                
+                <i style="color:red;" class="fas fa-download"> Click here to download</i>
+          
+              </h5>
+              </p>
+            </a>
+
+      </div>
+
+    </div>
+  </div>
+
+
+     <table class="super-table">
+      <tbody>
+
+    <% if @url_data.any?%>   
+
+    <thead>
+        <tr>
+          
+        
+          <th><center>Shortened URL</center></th>
+
+          <th><center>Created At</center></th>
+        
+        </tr>
+
+      </thead>
+      <tbody>
+   
+      
+
+       <% @url_data.each_with_index do |short_url, index| %>
+         <tr>
+            <td> <a href = <%= short_url %> target="_blank"> <%= short_url %></td>
+            <td> <%= @created_at_times[index].strftime("%d-%m-%Y %H:%M:%S") %> </td>
+          </tr>
+        <% end %>
+
+      <% end %>
+      </tbody>
+    </table>
+
+
+</div>
+
+
 
 </body>
+
+<script>
+
+    document.getElementById('btnclick').addEventListener('click', function() {
+    window.location.href = "/upload"; 
+  });
+</script>
 </html>
