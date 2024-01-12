@@ -28,11 +28,11 @@
 }
 a
 {
-    color:red;
+    color:white;
     text-decoration:none;
 }
 a:hover{
-    color: blue;
+    color: yellow;
 }
 .btn
 {
@@ -50,7 +50,7 @@ a:hover{
  <br>
     <br>
   <center>
-  <h1 class="white">Summary report of <span style="color:red;"><%= @user.username.upcase%> </span></h1>
+  <%# <h1 class="white">Summary report of <span style="color:red;"><%= @user.username.upcase%> 
 
   <div class="length white">
   <hr class="my-4 white">
@@ -62,7 +62,7 @@ a:hover{
 
     <div class="row">
         <div class="col-md-2">
-            <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+            <a  class="goback"href="/upload"> Shorten another URL </a> 
         </div>
 
         <div class="col-md-8">
@@ -92,7 +92,7 @@ a:hover{
         <br>
         <br>
         <br>
-        <h3 style="color:white; margin-bottom:30px;">
+        <h3 style="color:cyan; margin-bottom:30px;">
           User Details : 
         </h3>
 
@@ -126,12 +126,33 @@ a:hover{
 
 
 </div>
+<center>
+<div class="length white">
+  <hr class="my-4 white">
+</center>
+
+<div class="con">
+ <h3 style="color:white; margin-bottom:30px;"> Total Urls shortened untill Now is <span style ="color: #007bff; margin:10px;"> <%=@user.urls.count%> </span>  For dowloading the List of Urls created and shortened  untill now &nbsp; &nbsp;&nbsp;<a href= "/generate_pdf_summary" >   <i style="color:#3a86ff;" class="fas fa-download">  click </i> </a> </h3>
+
+</div>
+
+<center>
+<div class="length white">
+  <hr class="my-4 white">
+</center>
 
 <div class="con">
 
-  <h3 style="color:white; margin-bottom:30px;">
+  <h3 style="color:cyan; margin-bottom:30px;">
         URL shortened Most Times :   <a href = "<%= @most_used%>"  target="_blank">   <%= @most_used%> </a> <span style="color:white;"> <b>, count  (<%= @most_count%>) </b></span>
   </h3>
+
+  <center>
+<div class="length white">
+  <hr class="my-4 white">
+</center>
+
+
   <div class="row">
     <div class="col-md-3">
     <h4 style="color:white;  margin-bottom:30px;"> Shortened Urls for above url : </h4>
@@ -152,13 +173,13 @@ a:hover{
 
     <div class = "col-md-3">
       
-      <div class="btn">
+      <div class=" btn">
 
           <a href="/most_used_url_details">
             <p>
-              <h5>
+              <h5 class=" download goback">
                 
-                <i style="color:red;" class="fas fa-download"> Click here to download</i>
+                <i style="color:#3a86ff;" class="fas fa-download"> Download</i>
           
               </h5>
               </p>
@@ -203,8 +224,6 @@ a:hover{
 
 
 </div>
-
-
 
 </body>
 

@@ -14,29 +14,39 @@
               }
               .login-form {
                padding : 40px ;
-               /* background-color: lavender; */
+               background-color: #0d1b2a;
                background-size: cover;     
                background-position: center center; 
-               border-radius: 20px;
+               border-radius: 50px;
+               min-width:40%;
                max-width:80%;
           
               }
-              .btn-primary
+              .btn1
               {
-                width:50%;
+                margin-top:40px;;
               }
               .back{
                 margin-top:40px;
-                color:red;
+                color:white;
+              }
+              .back:hover{
+                color: #8eecf5;
               }
               .form{
-                height:50px;
+                height:70px;
+                border-radius:20px;
               }
               h3{
                 color:white;
               }
               h5{
                 color:white;
+              }
+              .reset{
+                font-size: 28px;
+                font-family : fantasy;
+                color: red;
               }
     </style>
   </head>
@@ -69,13 +79,13 @@
                   <div class="login-form">
                    <form action="/confirmtoken" method="post">
                     
-                    <h5 style="color:red;"> Enter the <span style="color:white;"> Reset code </span>sended to the email adress </h5>
+                    <h5> Enter the <span class="reset"> Reset code </span>sended to the email adress </h5>
                     <br>
                     <label for="email"><h3>Reset Code:</h3></label>
                     <br><br>
-                    <input type="text" id="token" name="token"  class="form-control form"required><br>
+                    <input type="text" id="token" name="token"  placeholder="7e5b2d26"  class="form-control form"required><br>
                     <center>
-                    <input type="submit" class="btn-primary"value="Verify">
+                    <input type="submit" class="btn1 form-control"value="Verify">
                   </form>
                   <br>
                       <div>

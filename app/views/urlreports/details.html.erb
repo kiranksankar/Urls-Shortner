@@ -29,11 +29,11 @@
 }
 a
 {
-    color:red;
+    color:white;
     text-decoration:none;
 }
 a:hover{
-    color: blue;
+    color: yellow;
 }
 .btn
 {
@@ -50,7 +50,7 @@ a:hover{
     <br>
     <br>
   <center>
-  <h1 class="white" >Detailes of <span style="color:red;"><%= @user.username.upcase%> </span></h1>
+  <%# <h1 class="white" >Detailes</h1> %>
 
   <div class="length white">
   <hr class="my-4 white">
@@ -63,7 +63,7 @@ a:hover{
 
     <div class="row">
         <div class="col-md-2">
-            <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+            <a  class="goback"href="/upload"> Shorten another URL </a> 
         </div>
 
         <div class="col-md-8">
@@ -78,9 +78,9 @@ a:hover{
               <div class="btn">
                     <a href="/dowload_details">
                       <p>
-                        <h5>
+                        <h5 class="goback">
                           
-                          <i style="color:red;" class="fas fa-download"> Click here to download</i>
+                          <i style="color:#3a86ff;;" class="fas fa-download"> Download</i>
                     
                         </h5>
                         </p>

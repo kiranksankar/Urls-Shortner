@@ -35,6 +35,33 @@
 .btn:hover{
   color: white;
 }
+.fa-copy:hover::before {
+    content: "Copy the link";
+    position: relative;
+    margin-left: 0px;
+    padding: 5px 8px;
+    background-color: white;
+    color: black;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 1;
+  }
+  
+  a{
+    color:white;
+    text-decoration:none;
+      }
+  a:hover{
+    color:yellow;
+  }
+  .download{
+    color:#8eecf5;
+    float:right;
+  }
+  .btn
+{
+  float:right;
+}
   </style>
 </head>
 
@@ -59,7 +86,7 @@
 <div class="con">
   <div class="row">
         <div class="col-md-2">
-            <input type ="button" class="btn-primary " id="btnclick" value="go back to shorten page">
+            <a  class="goback"href="/upload"> Shorten another URL </a> 
         </div>
 
         <div class="col-md-8">
@@ -76,20 +103,19 @@
         </div>
 
         <div class="col-md-2">
-
-              <div class="btn">
+           <div class=" download btn">
+            
                     <a href="generate_pdf_summary">
-                      <p>
+                      
                         <h5>
                           
-                          <i style="color:red;" class="fas fa-download"> Click here to download</i>
+                          <i style="color:#3a86ff;" class="fas fa-download"> Download</i>
                     
                         </h5>
-                        </p>
+                      
                       </a>
 
               </div>
-
         </div>
         </div>
 
