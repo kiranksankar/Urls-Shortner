@@ -74,11 +74,12 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'matrix'
 
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+
 
 gem 'factory_bot_rails'
 gem 'rails-controller-testing'
 
 gem 'will_paginate'
 
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

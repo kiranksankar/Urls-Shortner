@@ -1,7 +1,7 @@
 class FileuploadController < ApplicationController
   require 'csv'
   require 'prawn'
-  
+
   def upload
 
     @url = Url.new
@@ -109,28 +109,51 @@ class FileuploadController < ApplicationController
     def csvfileupload_download
 
 
-      file = $imported_urls
-      @count = 1
+      @user = User.all
+
       pdf = Prawn::Document.new
       pdf.text "Users List", size: 18, style: :bold
       pdf.move_down 10
-      pdf.text "\n"
 
-      file.each do |user|
-        pdf.text "<b>Sl.no : #{@count}</b>", inline_format: true
-        pdf.text "\n"
-        pdf.text "<b><u>Original Url : </u></b>
 
-        #{user[:original_url]}", inline_format: true
-        pdf.text "\n"
-        pdf.text "<b><u>Shortened Url: </u></b>
-
-        #{user[:shortened_url]}", inline_format: true
-        pdf.text "\n"
-        @count+=1
+      data = $imported_urls.map.with_index do |user, index|
+        [index + 1, user[:original_url],user[:shortened_url]]
       end
-      send_data pdf.render, filename: "Csv_file_upload#{Date.today}.pdf", type: 'application/pdf'
+
+      pdf.table(data, header: true, column_widths: { 0 => 40, 1 => 250, 2 => 250 }) do |table|
+        data.length.times do |i|
+          table.row(i).style(background_color: (i.even? ? 'DDDDDD' : 'FFFFFF'))
+        end
+        table.column(0).style(align: :center)
+        table.column(1).style(align: :left)
+        table.column(2).style(align: :left)
+      end
+
+      send_data pdf.render, filename: "User_summary_#{Date.today}.pdf", type: 'application/pdf'
+
     end
+      # file = $imported_urls
+      # @count = 1
+      # pdf = Prawn::Document.new
+      # pdf.text "Users List", size: 18, style: :bold
+      # pdf.move_down 10
+      # pdf.text "\n"
+
+      # file.each do |user|
+      #   pdf.text "<b>Sl.no : #{@count}</b>", inline_format: true
+      #   pdf.text "\n"
+      #   pdf.text "<b><u>Original Url : </u></b>
+
+      #   #{user[:original_url]}", inline_format: true
+      #   pdf.text "\n"
+      #   pdf.text "<b><u>Shortened Url: </u></b>
+
+      #   #{user[:shortened_url]}", inline_format: true
+      #   pdf.text "\n"
+      #   @count+=1
+      # end
+      # send_data pdf.render, filename: "Csv_file_upload#{Date.today}.pdf", type: 'application/pdf'
+
 
   private
 

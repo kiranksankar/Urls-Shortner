@@ -125,7 +125,7 @@ def redirect
 
   end
 
-  # ["id", "username", "email", "password_digest", "created_at", "updated_at", "confirmation_token", "email_confirmed"]
+  
 
 
 
