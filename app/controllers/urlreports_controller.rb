@@ -178,7 +178,11 @@ class UrlreportsController < ApplicationController
 
     end
 
-    pdf.table( [['sl.no','Shortened Url', 'Created at']] + data, column_widths: { 0 => 50, 1 => 300, 2 => 150 }) do |table|
+     pdf.text "The Most Used Url is :
+     #{@most_used}", size: 18, style: :bold
+     pdf.move_down 20
+
+      pdf.table( [['sl.no','Shortened Url', 'Created at']] + data, column_widths: { 0 => 50, 1 => 300, 2 => 150 }) do |table|
       data.length.times do |i|
         table.row(i).style(background_color: (i.even? ? 'DDDDDD' : 'FFFFFF'))
       end
