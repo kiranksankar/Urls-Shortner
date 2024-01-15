@@ -112,7 +112,7 @@ class FileuploadController < ApplicationController
       @user = User.all
 
       pdf = Prawn::Document.new
-      pdf.text "Users List", size: 18, style: :bold
+      pdf.text "Csv upload List", size: 18, style: :bold
       pdf.move_down 10
 
 
@@ -132,7 +132,7 @@ class FileuploadController < ApplicationController
         table.column(2).style(align: :left)
       end
 
-      send_data pdf.render, filename: "User_summary_#{Date.today}.pdf", type: 'application/pdf'
+      send_data pdf.render, filename: "Csv_upload_List#{Date.today}.pdf", type: 'application/pdf'
 
     end
       # file = $imported_urls
