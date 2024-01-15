@@ -57,6 +57,9 @@ Rails.application.routes.draw do
   get '/most_used_url_details' => 'urlreports#most_used_url_details'
 
 
+  get '/summary_details' => 'urlreports#summary_details'
+
+
 
   get '/details', to: 'urlreports#details'
   get '/urlsummary', to: 'urlreports#summary'

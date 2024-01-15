@@ -75,11 +75,11 @@ a:hover{
         <div class="col-md-2">
 
               <div class="btn">
-                    <a href="/dowload_details">
+                    <a href="/summary_details">
                       <p>
                         <h5>
                           
-                          <%# <i style="color:red;" class="fas fa-download"> Click here to download</i> %>
+                          <i style="color:red;" class="fas fa-download"> Click here to download</i>
                     
                         </h5>
                         </p>
@@ -101,22 +101,22 @@ a:hover{
 
 
          <tr>
-            <td>User id</td>
+            <td style="border-color:cyan;">User id</td>
             <td> <%= @user.id%></td>
           </tr>
 
           <tr>
-            <td>User Name</td>
+            <td style="border-color:cyan;">User Name</td>
             <td> <%= @user.username%></td>
           </tr>
 
           <tr>
-            <td>Email</td>
+            <td style="border-color:cyan;"> Email</td>
             <td> <%= @user.email%></td>
           </tr>
 
           <tr>
-            <td>Total URLS shortened</td>
+            <td style="border-color:cyan;">Total URLS shortened</td>
             <td> <%= @user.urls.count%></td>
           </tr>
 
