@@ -33,9 +33,7 @@ class UrlshortenerController < ApplicationController
   end
 
   if @input_urls.empty?
-
     flash[:url_error] = ['No URLs provided']
-
     redirect_to '/upload'
   else
 
@@ -44,7 +42,7 @@ class UrlshortenerController < ApplicationController
 
   @input_urls.each do |url|
 
-    unless url[:original_url].start_with?('http://', 'https://') && input_urls =~ /\Ahttps:\/\/.+/
+    unless url[:original_url].start_with?('http://', 'https://')  && url[:original_url] =~ /\Ahttps:\/\/.+/
       errors = true
       break
     end
