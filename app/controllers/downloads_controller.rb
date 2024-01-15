@@ -16,7 +16,7 @@ data = @urls.map.with_index do |url, index|
   [index + 1, url.original_url, url.shortened_url]
 end
 
-pdf.table(data, header: true, column_widths: { 0 => 40, 1 => 250, 2 => 250 }) do |table|
+pdf.table([['sl.no', 'Original url', 'Shortened Url']] + data, header: true, column_widths: { 0 => 40, 1 => 250, 2 => 250 }) do |table|
   data.length.times do |i|
     table.row(i).style(background_color: (i.even? ? 'DDDDDD' : 'FFFFFF'))
   end
@@ -41,11 +41,11 @@ end
       pdf.move_down 10
 
 
-      data = @user.map.with_index do |user, index|
-        [index + 1, user.username,user.email]
+      data = @user.map.with_index do |user|
+        [user.id, user.username,user.email]
       end
 
-      pdf.table(data, header: true, column_widths: { 0 => 40, 1 => 250, 2 => 250 }) do |table|
+      pdf.table([['User id', 'Usr Name', 'User email']] + data, header: true, column_widths: { 0 => 60, 1 => 240, 2 => 240 }) do |table|
         data.length.times do |i|
           table.row(i).style(background_color: (i.even? ? 'DDDDDD' : 'FFFFFF'))
         end

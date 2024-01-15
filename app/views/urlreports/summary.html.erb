@@ -75,11 +75,15 @@ a:hover{
         <div class="col-md-2">
 
               <div class="btn">
+                <% if @urls.present? %>
                     <a href="/summary_details">
                       <p>
                         <h5>
                           
                           <i style="color:#3a86ff;" class="fas fa-download"> Click here to download</i>
+                          <% else%>
+                          <h5 style = "color:white;" > No Url shortened</h5>
+                          <%end %>
                     
                         </h5>
                         </p>
@@ -132,7 +136,7 @@ a:hover{
 </center>
 
 <div class="con">
- <h3 style="color:white; margin-bottom:30px;"> Total Urls shortened untill Now is <span style ="color: #007bff; margin:10px;"> <%=@user.urls.count%> </span>  For dowloading the List of Urls created and shortened  untill now &nbsp; &nbsp;&nbsp;<a href= "/generate_pdf_summary" >   <i style="color:#3a86ff;" class="fas fa-download">  click </i> </a> </h3>
+ <h3 style="color:white; margin-bottom:30px;"> Total Urls shortened untill Now is <span style ="color: #007bff; margin:10px;"> <%=@user.urls.count%> </span>  For dowloading the List of Urls created and shortened  untill now &nbsp; &nbsp;&nbsp; <% if @urls.present? %> <a href= "/generate_pdf_summary" >   <i style="color:#3a86ff;" class="fas fa-download">  click </i> </a> <%else%><h5 style="color:white;">No urls Shortened yet..</h5>  <% end %></h3>
 
 </div>
 
@@ -142,6 +146,7 @@ a:hover{
 </center>
 
 <div class="con">
+   <% if @urls.present? %>
 
   <h3 style="color:cyan; margin-bottom:30px;">
         URL shortened Most Times :   <a href = "<%= @most_used%>"  target="_blank">   <%= @most_used%> </a> <span style="color:white;"> <b>, count  (<%= @most_count%>) </b></span>
@@ -190,7 +195,7 @@ a:hover{
     </div>
   </div>
 
-
+<% end %>
      <table class="super-table">
       <tbody>
 

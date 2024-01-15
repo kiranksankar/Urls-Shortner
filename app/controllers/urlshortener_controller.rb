@@ -42,7 +42,7 @@ class UrlshortenerController < ApplicationController
 
   @input_urls.each do |url|
 
-    unless url[:original_url].start_with?('http://', 'https://')
+    unless url[:original_url].start_with?('http://', 'https://') && input_urls = ~ /\Ahttps:\/\/.+/
       errors = true
       break
     end
@@ -125,7 +125,7 @@ def redirect
 
   end
 
-  
+
 
 
 

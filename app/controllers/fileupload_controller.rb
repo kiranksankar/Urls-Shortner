@@ -24,7 +24,7 @@ class FileuploadController < ApplicationController
 
           next if original_url.blank?
 
-          unless original_url.start_with?('http://', 'https://')
+          unless original_url.start_with?('http://', 'https://') && original_url =~ /\Ahttps:\/\/.+/
             invalid_urls << original_url
             next
           end
@@ -118,9 +118,12 @@ class FileuploadController < ApplicationController
 
       data = $imported_urls.map.with_index do |user, index|
         [index + 1, user[:original_url],user[:shortened_url]]
+
       end
 
-      pdf.table(data, header: true, column_widths: { 0 => 40, 1 => 250, 2 => 250 }) do |table|
+      pdf.table( [['sl.no', 'Original url', 'Shortened Url']] + data, header: true, column_widths: { 0 => 40, 1 => 250, 2 => 250 }) do |table|
+
+
         data.length.times do |i|
           table.row(i).style(background_color: (i.even? ? 'DDDDDD' : 'FFFFFF'))
         end

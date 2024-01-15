@@ -178,7 +178,7 @@ class UrlreportsController < ApplicationController
 
     end
 
-    pdf.table(data, column_widths: { 0 => 50, 1 => 300, 2 => 150 }) do |table|
+    pdf.table( [['sl.no','Shortened Url', 'Created at']] + data, column_widths: { 0 => 50, 1 => 300, 2 => 150 }) do |table|
       data.length.times do |i|
         table.row(i).style(background_color: (i.even? ? 'DDDDDD' : 'FFFFFF'))
       end
@@ -251,6 +251,7 @@ class UrlreportsController < ApplicationController
     ]
 
     pdf.table(data, header: true) do |table|
+
       data.length.times do |i|
         table.row(i).style(background_color: (i.even? ? 'DDDDDD' : 'FFFFFF'))
       end
@@ -291,7 +292,7 @@ class UrlreportsController < ApplicationController
 
     pdf.move_down 30
 
-    pdf.table(data, column_widths: { 0 => 50, 1 => 300, 2 => 150 }) do |table|
+    pdf.table( [['sl.no', 'Shortened Url', 'Created at']] + data, column_widths: { 0 => 50, 1 => 300, 2 => 150 }) do |table|
       data.length.times do |i|
         table.row(i).style(background_color: (i.even? ? 'DDDDDD' : 'FFFFFF'))
       end
