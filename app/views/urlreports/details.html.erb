@@ -27,6 +27,15 @@
 .con{
   margin:40px 100px;
 }
+
+.super-table th {
+  border: 3px solid cyan;
+  padding: 20px;
+  max-width:40px;
+  text-align: center;
+  color: white;
+  
+}
 a
 {
     color:white;
@@ -100,55 +109,55 @@ a:hover{
 
 
          <tr>
-            <td>User id</td>
+            <th>User id</th>
             <td> <%= @user.id%></td>
           </tr>
 
           <tr>
-            <td>User Name</td>
+            <th>User Name</th>
             <td> <%= @user.username%></td>
           </tr>
 
           <tr>
-            <td>Email</td>
+            <th>Email</th>
             <td> <%= @user.email%></td>
           </tr>
 
           <tr>
-            <td>Total URLS shortened</td>
+            <th>Total URLS shortened</th>
             <td> <%= @user.urls.count%></td>
           </tr>
               <% if @urls.any?%>
           <tr>
-            <td> First Url shortened</td>
+            <th> First Url shortened</th>
             <td> <a href= <%= @first%> target="_blank"> <%= @first%></a> </td>
           </tr>
 
 
           <tr>
-            <td> Last Url shortened</td>
+            <th> Last Url shortened</th>
             <td> <a href= <%= @last%> target="_blank">  <%= @last%> </a> </td>
           </tr>
 
 
           <tr>
-            <td> Most shortened Url</td>
+            <th> Most shortened Url</th>
             <td> <a href = "<%= @most_used%>"  target="_blank">   <%= @most_used%> </a> <span style="color:white;"> , count  (<%= @most_count%>) </span></td>
           </tr>
 
          <tr>
-            <td> Least shortened Url</td>
+            <th> Least shortened Url</th>
             <td> <a href = <%= @least_used%> target="_blank"> <%= @least_used%> <span style="color:white;"> , count  (<%= @least_count%>) </span></td>
           </tr>
         
 
           <tr>
-            <td> Download the All urls Shortened</td>
+            <th> Download the All urls Shortened</th>
             <td> <a href="/generate_pdf_summary"> Download the Urls List</a></td>
           </tr>
 
           <tr>
-            <td> Download the All Users List</td>
+            <th> Download the All Users List</th>
             <td> <a href="/generate_User_summary"> Download the Urls List</a></td>
           </tr>
 
