@@ -34,7 +34,7 @@ class HomeController < ApplicationController
       flash[:register_error] = @user.errors.full_messages
       # puts(user.errors.full_messages)
       # redirect_to root_path
-      redirect_to '/recipie'
+      redirect_to '/register'
     end
   end
 

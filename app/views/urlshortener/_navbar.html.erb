@@ -1,59 +1,62 @@
-
-
-<style>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
   
+  <%# <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    /* Add your custom styles here if needed */
   </style>
-<nav class="navbar navbar-dark bg-dark header11">
-  <div class="container-fluid">
-    <div class="navbar-brand">
-      <a class="nav-link" href="/count">
-        <h2> <img src= <%= asset_path('logo.png')%> alt="Logo" height="60" width="60"> Url Shortener</h2>
-      </a>
-    </div>
+</head>
+<body>
 
-    <div class="d-flex justify-content-end nav-tabs">
-      <ul class="nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark header11">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/count">
+      <h2><img src="<%= asset_path('logo.png')%>" alt="Logo" height="60" width="60"> Url Shortener</h2>
+    </a>
+  
+   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto nav-tabs">
         <li class="nav-item">
           <a class="nav-link" href="/count">
-            <h4 class="space" >Home</h4>
+            <h4 class="space">Home</h4>
           </a>
         </li>
 
-
-        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-inline-flex align-items-center" id="reports" role="button" data-toggle="dropdown" aria-expanded="false">
+            <h4 class="space">Reports</h4>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/urlsummary">Summary</a></li>
+            <li><a class="dropdown-item" href="/details">Details</a></li>
+          </ul>
+        </li>
 
         <li class="nav-item dropdown">
-            
-            <a class="nav-link dropdown-toggle d-inline-flex align-items-center" id="reports" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             <%# <h4 class="space">Download</h4> %> <h4 class="space">  Reports </h4>
-            </a>
-          
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/urlsummary">Summary </a></li>
-              <li><a class="dropdown-item" href="/details"> Details</a></li>
-              
-            </ul>
-          </li>
+          <a class="nav-link dropdown-toggle d-inline-flex align-items-center" id="downloadsDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            <h4 class="space">View</h4>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/urlslist">Url Shortened List</a></li>
+            <li><a class="dropdown-item" href="/userlist">User List</a></li>
+          </ul>
+        </li>
 
-
-        <li class="nav-item dropdown">
-            
-            <a class="nav-link dropdown-toggle d-inline-flex align-items-center" href="#" id="downloadsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             <%# <h4 class="space">Download</h4> %> <h4 class="space">  View </h4>
-            </a>
-          
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/urlslist">Url shortened list</a></li>
-              <li><a class="dropdown-item" href="/userlist">User List</a></li>
-              
-            </ul>
-          </li>
-
-          
         <li class="nav-item">
           <a class="nav-link" href="/logout">
-            <h4 class="space"  >Logout</h4>
+            <h4 class="space">Logout</h4>
           </a>
         </li>
       </ul>
@@ -62,7 +65,7 @@
 </nav>
 
 <script>
-   $(document).ready(function() {
+  $(document).ready(function() {
     $('.dropdown-toggle').hover(function() {
       if (!$(this).hasClass('show')) {
         $(this).addClass('show');
@@ -80,3 +83,7 @@
     });
   });
 </script>
+
+
+</body>
+</html>

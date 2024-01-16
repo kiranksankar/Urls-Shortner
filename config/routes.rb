@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/about', to: 'home#about'
 
-  get '/recipie' => 'home#register'
+  get '/register' => 'home#register'
 
   get '/confirm_email', to: 'home#confirm_email', as: 'confirm_email'
 
