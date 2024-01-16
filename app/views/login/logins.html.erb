@@ -9,22 +9,24 @@
     <style>
         body {
             background-image: url('<%= asset_path('pexels-photo-1365795.jpeg') %>');
+            background-color:black;
             background-size: cover;
             background-position: center center;
             font-family: Arial, sans-serif;
             margin: 0;
+            height:100vh;
         }
 
-        .login-form {
-            padding: 40px;
-            background-color: #0d1b2a;
+       .login-form {
+            padding: 0px;
+            /* background-color: #0d1b2a; */
+            border-radius: 20px;
             min-width: 70%;
             max-width: 80%;
             margin: auto;
             margin-top: 50px;
-            border-radius: 30px;
+            border-radius: 50px;
         }
-
         h6 {
             color: white;
             float: right;
@@ -48,7 +50,20 @@
         a:hover {
             color: #8eecf5;
         }
+        .log {
+        padding: 20px ;
+        margin-top: 50px ;
+        color: rgb(5, 5, 5);
+        border-color: #1ab7de;
+      }
+    .container{
+      margin-top:10%;
+      }
+    
 
+    .padding{
+        margin-top:200px;
+      }
         @media (max-width: 768px) {
             .login-form {
                 min-width: 100%;
@@ -63,96 +78,117 @@
 <body>
 
 
-  <%# <div> %>
-  <div class="body">
-    <%= render 'home/navbar1' %> 
+     <div>
+        <%= render 'home/navbar1' %> 
+    </div>
+    <br>
+                       
+                              <% if flash[:login_error].present? %>
+                          <div>
+                            <script>
 
-    <% if flash[:login_error].present? %>
-  <script>
+                                alert("<%= j flash[:login_error] %>"); 
+                            
+                            </script>
+                            
+                              <% elsif flash[:register_success].present? %>
+                            
+                            <script>
+                            
+                            alert("<%= j flash[:register_success] %>");
+                            
+                            </script>
 
-      alert("<%= j flash[:login_error] %>"); 
-  
-  </script>
-  
-    <% elsif flash[:register_success].present? %>
-  
-  <script>
-  
-  alert("<%= j flash[:register_success] %>");
-  
-  </script>
-    <% end %>
+                          </div>
+                              <% end %>
+                           
+
+      <div class="d-flex  justify-content-center">
+
+        <div class="container">
+
+                    <div class="row">
 
       
-    <div class="row">
-      <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
-        <div class="col-sm-6">
-          <center>
-            <h1 class="display-2 justify-center head1">URL Shortner</h1>
-            <h4 class="head1">
-              <center> All types of URLs are shortened Here </center>
-            </h4>
-          </center>
-        </div>
+                                <div class="col-sm-6 ">
 
-        <div class="col-sm-4">
-          <div class="login-form">
-          <form method="POST" action="/session">
-            <div class="row">
-              <div>
-                <input class="form-control log" type="email" name="login[email]" placeholder="Example@gmail.com" />
-              </div>
-            </div>
-            <br>    
+                                  <div class="login-form justify-content-center padding">
+                                          <center>
+                                              <h1 class="display-2 justify-center head1">URL Shortner
 
-            <div>
-              <input class="form-control log" type="password" name="login[password]"  id="passwordField" placeholder="***********" />
-            </div>
-            <br>
-            <input type="checkbox" onchange="togglePassword();" /> <span class="head1"> Show Password</span>
-            <br><br>
-            <center>
-              <button class="btn1 form-control" type="submit">Login</button>
-            </center>
-            <div class="create">
-             
-                  <br>
-                  <br>
-                  <div class="row">
-                      <div class="col-sm-5">
-                        <a href="/forgotpassword">
-                  <h6 style="float:left;">Forgot password?</h6>
-                  </a>
-                      </div>
+                                              </h1>
+                                              <h4 class="head1">
+                                                  <center> All types of URLs are shortened Here </center>
+                                              </h4>
+                                          </center>
+                                  </div>
+                                </div>
 
-                 <div class="col-sm-7">
-                   <a href="/recipie" class="head">
-                <h6>Create a New account ?</h6>
-                </div>
-                </div>
-              </a>
-            </div>
-          </form>
-          </div>
+                                <div class="col-sm-6">
+
+                                  <div class="login-form">
+
+                                    <form method="POST" action="/session">
+
+                                      <div class="row">
+                  
+                                          <div>
+                                            <input class="form-control log" type="email" name="login[email]" placeholder="Example@gmail.com" />
+                                          </div>
+                  
+                                            <br>    
+
+                                          <div>
+                                            <input class="form-control log" type="password" name="login[password]"  id="passwordField" placeholder="***********" />
+                                          </div>
+
+                                      </div>
+
+                                            <br>
+                                      
+                                          <input type="checkbox" onchange="togglePassword();" /> <span class="head1"> Show Password</span>
+                                          <br><br>
+
+
+                                          <center>
+                                            <button class="btn1 form-control" type="submit">Login</button>
+                                          </center>
+
+
+
+                                    
+                                          <br><br>
+
+                                          <div class="row">
+                                              <div class="col-sm-6 d-flex">
+                                                <a href="/forgotpassword">
+                                                  <h6 style="float:left;">Forgot password</h6>
+                                                </a>
+                                              </div>
+                                              <br>
+                                              <br>
+                                              
+
+                                              <div class="col-sm-6 float-right d-flex ml-auto">
+                                                <a href="/register">
+                                                  <h6 >Create a New account </h6>
+                                                </a>
+                                              </div>
+                                          </div>
+                                     
+                    
+            
+                                    </form>
+                                  </div>
+                                </div>
+                    </div>
         </div>
       </div>
-    </div>
-  </div>
-<%# </div> %>
+
 
 <script>
-  
 
-  // $(document).ready(function() {
-
-  //   $('#loginError').delay(3000).fadeOut('slow');
-
-
-  //   $('#registerSuccess').delay(3000).fadeOut('slow');
-  // });
-
-
-  function togglePassword() {
+    function togglePassword() {
     var passwordField = document.getElementById('passwordField');
 
     if (passwordField.type === 'password') {
@@ -162,6 +198,18 @@
     }
   }
 </script>
+  
+
+  <%# // $(document).ready(function() {
+
+  //   $('#loginError').delay(3000).fadeOut('slow');
+
+
+  //   $('#registerSuccess').delay(3000).fadeOut('slow');
+  // }); %>
+
+
+
 
 
 

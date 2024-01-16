@@ -3,24 +3,35 @@
 <html>
 <head>
   
-  <title>Login  </title>
-  <style>
- .body {
+ <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+ body {
   background-image: url('<%= asset_path('pexels-photo-1365795.jpeg') %>');
   background-size: cover;     
   background-position: center center; 
   font-family: Arial, sans-serif;
   margin: 0;
+  /* height:100vh; */
+
+ 
 }
 .head1
 {
   color:white;
   
 }
+.log {
+  padding: 20px ;
+  margin-top: 50px ;
+  color: rgb(5, 5, 5);
+  border-color: #1ab7de;
+}
 
  .login-form {
-            padding: 40px;
-            background-color: #0d1b2a;
+            padding: 0px;
+            /* background-color: #0d1b2a; */
             border-radius: 20px;
             min-width: 70%;
             max-width: 80%;
@@ -28,6 +39,8 @@
             margin-top: 50px;
             border-radius: 50px;
         }
+
+        
 
 
 a {
@@ -37,6 +50,9 @@ a {
   color:white;
   
 
+}
+.padding{
+  margin-top:200px;
 }
 h6{
   color: white;
@@ -63,79 +79,100 @@ a:hover{
   transition: opacity 1s ease-in-out;
 }
 
+        @media (max-width: 768px) {
+            .login-form {
+                min-width: 100%;
+            }
+        }
+
 
   </style>
 </head>
 
 <body>
 
-    <div class="body">
+    
       <div>
         <%= render  "home/navbar1" %>
       </div>
+      
         <br>
-            <% if flash[:register_error].present? %> 
-                <div class="show" id="registerError">
-                  <h5 style="color:red;">
-                      <% flash[:register_error].each_with_index do |error, index| %>
-                      <%= error %> <%= index < flash[:register_error].size - 1 ? ', ' : '' %>
-                      <% end %>
-                  </h5>
-                  </div>
+                <% if flash[:register_error].present? %> 
+                    <div class="show" id="registerError">
+                      <h5 style="color:red;">
+                          <% flash[:register_error].each_with_index do |error, index| %>
+                          <%= error %> <%= index < flash[:register_error].size - 1 ? ', ' : '' %>
+                          <% end %>
+                      </h5>
+                    </div>
               <% end %>
 
-      <div class="row">
-            <div class="vw-100 vh-100 d-flex align-items-center justify-content-center">
-                  <div class="col-sm-5">
-                      <center>
-                          <h1 class="display-2 justify-center head1">URL Shortner</h1>
-                          <h4 class="head1">
-                              <center> All types of URLs are shortened Here </center>
-                          </h4>
-                      </center>
-                  </div>
-    
-        <div class="col-sm-6">
-          <div class="login-form">
-          <%= form_with(model: User.new, url: users_path, method: :post) do |form| %>
-            <div class="row">
-              <div>
-                <%= form.text_field :username, class: 'form-control log', placeholder: 'Enter the Username' %>
-              </div>
-              <div>
-                <%= form.email_field :email, class: 'form-control log', placeholder: 'Example@gmail.com' %>
-              </div>
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-6">
-                <%= form.password_field :password, class: 'form-control log', placeholder: '***********' %>
-              </div>
-              <div class="col-6">
-                <%= form.password_field :password_confirmation, class: 'form-control log', placeholder: '***********' %>
-              </div>
-            </div>
-            <br>
-            <input type="checkbox" onchange="togglePassword();"/> <span class="head1"> Show Password</span>
-            <br><br>
-            <center>
-              <%= form.submit 'Register', class: 'btn1 form-control' %>
-            </center>
-          <% end %>
-          <div class="create">
-              <a href="/logins">
-                  <br>
-                  <br>
-                <h6>Already have an account ? </h6>
-              </a>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <div class="vh-100 d-flex justify-content-center">
 
-</body>
+        <div class="container">
+          <div class="row">
+          
+                                  <div class="col-sm-6">
+                                        <div class="login-form justify-content-center padding" >
+                                            <center>
+                                                <h1 class="display-2 justify-center head1">URL Shortner</h1>
+                                                <h4 class="head1">
+                                                    <center> All types of URLs are shortened Here </center>
+                                                </h4>
+                                            </center>
+                                        </div>
+                                  </div>
+        
+                                  <div class="col-sm-6">
+
+                                        <div class="login-form">
+
+                                              <%= form_with(model: User.new, url: users_path, method: :post) do |form| %>
+
+
+                                                  <div class="row">
+
+                                                        <div>
+
+                                                          <%= form.text_field :username, class: 'form-control log', placeholder: 'Enter the Username' %>
+                                                        </div>
+                                                  
+                                                        <div>
+                                                          <%= form.email_field :email, class: 'form-control log', placeholder: 'Example@gmail.com' %>
+                                                        </div>
+                                                  </div>
+                                                <br>
+                                                  <div class="row">
+                                                        <div class="col-sm-6">
+                                                          <%= form.password_field :password, class: 'form-control log', placeholder: '***********' %>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                          <%= form.password_field :password_confirmation, class: 'form-control log', placeholder: '***********' %>
+                                                        </div>
+                                                  </div>
+                                                <br>
+                                                        <input type="checkbox" onchange="togglePassword();"/> <span class="head1"> Show Password</span>
+                                                        <br><br>
+
+                                                        <center>
+                                                          <%= form.submit 'Register', class: 'btn1 form-control' %>
+                                                        </center>
+
+                                                      <% end %>
+                                                      <div class="create">
+                                                        <a href="/logins">
+                                                            <br>
+                                                            <br>
+                                                          <h6>Already have an account ? </h6>
+                                                        </a>
+                                                      </div>
+                                        </div>
+                                  </div>
+          </div>
+        </div>
+    </div>
+
+  </body>
 
 
 
