@@ -87,7 +87,7 @@ Rails.application.routes.draw do
   # get '/url_summary', to: 'usersummmary#generate_pdf_summary'
   # get '/user_summary', to: 'usersummmary#generate_User_summary'
   #
-   get '/:urldelete' => 'urlshortener#delete', as: 'urldelete'
+  #
 
   get '/:shortened_url', to: 'urlshortener#redirect', as: 'redirect'
 

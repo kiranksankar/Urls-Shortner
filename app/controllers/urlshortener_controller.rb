@@ -126,28 +126,28 @@ def redirect
   end
 
 
-  def delete
+  # def delete
 
 
 
-    id = params[:urldelete]
+  #   id = params[:urldelete]
 
-    url = Url.find_by(id: id)
-
-
-    puts"==**********************************************************************"
-
-    puts id
-
-    puts"==**********************************************************************"
+  #   url = Url.find_by(id: id)
 
 
-    url.destroy
+  #   puts"==**********************************************************************"
 
-    redirect_to urlslist_path, notice: 'URL was successfully deleted.'
+  #   puts id
+
+  #   puts"==**********************************************************************"
 
 
-  end
+  #   url.destroy
+
+  #   redirect_to urlslist_path, notice: 'URL was successfully deleted.'
+
+
+  # end
 
 
 

@@ -117,7 +117,7 @@
     document.body.appendChild(inputField);
     inputField.setAttribute('value', shortenedUrl);
     inputField.select();
-    // document.execCommand('copy');
+    document.execCommand('copy');
     document.body.removeChild(inputField);
     alert("Copied the text: " + shortenedUrl);
   }
