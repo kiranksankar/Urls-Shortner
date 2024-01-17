@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   get '/forgotpassword', to: 'login#edit'
 
+  get '/token_confirm', to: 'login#tocken_confirm'
+
+  get '/password', to: 'login#password', as: 'password'
+
   get "/logout", to: 'session#destroy'
 
 
@@ -51,7 +55,12 @@ Rails.application.routes.draw do
   get 'generate_pdf_summary', to: 'downloads#generate_pdf_summary'
   get '/generate_User_summary', to: 'downloads#generate_User_summary'
 
-  get '/token_confirm', to: 'login#tocken_confirm'
+
+
+
+
+
+
 
 
   get '/most_used_url_details' => 'urlreports#most_used_url_details'
@@ -70,13 +79,15 @@ Rails.application.routes.draw do
 
 
   # get '/:password', to: 'login#password'
-  get '/password', to: 'login#password', as: 'password'
+
 
 
 
 
   # get '/url_summary', to: 'usersummmary#generate_pdf_summary'
   # get '/user_summary', to: 'usersummmary#generate_User_summary'
+  #
+   get '/:urldelete' => 'urlshortener#delete', as: 'urldelete'
 
   get '/:shortened_url', to: 'urlshortener#redirect', as: 'redirect'
 
