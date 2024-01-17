@@ -8,6 +8,11 @@ class UrlreportsController < ApplicationController
 
     @user = current_user
 
+
+    puts"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+    puts @user.id
+
     @urls = @user.urls
 
     @urls_counts = @urls.group(:original_url).count
@@ -16,7 +21,7 @@ class UrlreportsController < ApplicationController
 
     @most_count = @urls_counts[@most_used]
 
-    matching_urls = Url.where(original_url: @most_used)
+    matching_urls = Url.where(original_url: @most_used, user_id: @user.id)
 
 
     @short_urls = matching_urls.pluck(:shortened_url, :created_at)
@@ -160,7 +165,7 @@ class UrlreportsController < ApplicationController
     @urls_counts = @urls.group(:original_url).count
     @most_used = @urls_counts.key(@urls_counts.values.max)
     @most_count = @urls_counts[@most_used]
-    matching_urls = Url.where(original_url: @most_used)
+    matching_urls = Url.where(original_url: @most_used, user_id: @user.id )
 
 ## create short url and created at data in separate arryas
 #
@@ -226,7 +231,7 @@ class UrlreportsController < ApplicationController
     # @urls_counts = @urls.group(:original_url).count
     # @most_used = @urls_counts.key(@urls_counts.values.max)
     # @most_count = @urls_counts[@most_used]
-    matching_urls = Url.where(original_url: most_used)
+    matching_urls = Url.where(original_url: most_used, user_id: user.id)
 
 ## create short url and created at data in separate arryas
 #
