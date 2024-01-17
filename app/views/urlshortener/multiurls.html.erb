@@ -13,8 +13,8 @@
     }
       body {
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      background-image: url('<%= asset_path('pexels-tofroscom-257853.jpg') %>');
+      background-color: #343a40;
+      /* background-image: url('<%= asset_path('pexels-tofroscom-257853.jpg') %>'); */
       margin: 0;
       background-size: cover; 
       background-position: center center; 
@@ -46,6 +46,7 @@
       border: 1px solid #ccc;
       padding: 25px;
       border-radius: 5px;
+
     }
     .fa-copy{
     color: black;
@@ -77,14 +78,14 @@
             <label for="originalUrl">Original URL:</label>
             <br>
             <br>
-                <div class="white-box form-control" id="originalUrl"><%= url[:original_url] %>
+                <div class="white-box" id="originalUrl"><%= url[:original_url] %>
                 </div>
                 
           </div>
 
           <div class="url-container">
             <label for="shortUrl"><p style="color:#8eecf5;">Short URL:</p></label>
-            <div class="white-box form-control" id="shortUrl">
+            <div class="white-box" id="shortUrl">
               <a href = <%= url[:shortened_url] %> target="_blank" ><%= url[:shortened_url] %> </a> <span><i class="fa fa-copy" type="button" onclick="copyText('<%= url[:shortened_url] %>')"></i></span>
             </div>
 
@@ -116,7 +117,7 @@
     document.body.appendChild(inputField);
     inputField.setAttribute('value', shortenedUrl);
     inputField.select();
-    document.execCommand('copy');
+    // document.execCommand('copy');
     document.body.removeChild(inputField);
     alert("Copied the text: " + shortenedUrl);
   }
