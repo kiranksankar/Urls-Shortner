@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shortened URL Count</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('<%= asset_path('pexels-tofroscom-257853.jpg') %>');
+      background-size:cover; 
+      background-position: center center;
+      background-attachment: fixed; 
+      margin: 0;
+      font-family: Arial, sans-serif;
+  
+    }
+ 
+    p{
+      color:white;
+    }
+    h1{
+      color:white;
+    }
+    
+
+  </style>
+</head>
+<%= render  "urlshortener/navbar"%>
+<% if flash[:error].present? %>
+  
+    <h5 class="alert alert-success show" id="success"><%= flash[:error]%></h5>
+<% end %>
+
+
+
+  
+<body>
+
+    <br>
+    <br>
+    
+    <center>
+       <h1 class="display-2 justify-center">URL Shortener</h1>
+    
+      <center> <p>All types of URLs are shortened here</center>
+    </p>
+  </center>
+  <div class="container">
+                <div class="login-form">
+
+                    <%= form_tag('/qrcode_generate', method: 'POST') do %>
+
+      
+                        
+                            <br><br>
+
+                        <div class="row">
+                            
+                            <div class="col-md-8 col-sm-8">
+
+                                <h4 style="color:cyan;">Add URLs Here( <span style="color:red;">Only one URL</span>)</h4>
+                                <br>
+                                <%= text_field_tag 'original_url', nil, class: 'form-control urlsinput' %>
+
+                            </div>
+
+                            <div class="col-md-4 col-sm-4">
+                                <br>
+
+                                <%= submit_tag 'Create', class: 'btn-url' %>
+
+                            </div>
+
+                        </div>
+
+                    <% end %>
+                </div>
+    </div>
+                  
+    
+    </center>
+</body>
+<script>
+
+var registerErrorDiv = document.getElementById('success');
+
+if (registerErrorDiv) {
+  setTimeout(function() {
+    registerErrorDiv.style.opacity = '0';
+  }, 3000); 
+}
+</script>
+</html>

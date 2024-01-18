@@ -21,6 +21,11 @@ Rails.application.routes.draw do
 
 
 
+  get '/qrcode' => 'fileupload#qrcode'
+
+  get 'qrcodeshow' => 'fileupload#qrcodeshow'
+
+  
   get '/upload', to: 'fileupload#upload'
 
 
@@ -51,7 +56,6 @@ Rails.application.routes.draw do
   get '/download', to: 'urlshortener#download'
 
 
-  post '/delete' => 'urlshortener#delete'
 
 
   get '/upload_download', to: 'fileupload#csvfileupload_download'
@@ -97,7 +101,9 @@ Rails.application.routes.draw do
 
 
 
+  post '/delete' => 'urlshortener#delete'
 
+  post 'qrcode_generate' => 'fileupload#qrcode_generate'
 
   post '/password_reset', to: 'login#password_reset'
 

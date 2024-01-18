@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+          .url-container {
+      margin-bottom: 20px;
+    }
+    .url-container label {
+      font-weight: bold;
+      color:white ;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    }
+      body {
+      font-family: Arial, sans-serif;
+      background-color: #343a40;
+      /* background-image: url('<%= asset_path('pexels-tofroscom-257853.jpg') %>'); */
+      margin: 0;
+      background-size: cover; 
+      background-position: center center; 
+     
+      font-family: Arial, sans-serif;
+  
+    }
+    /* .url-container input{
+      width: 100%;
+      height : 80px;
+      margin-top: 5px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius:10px;
+     
+    } */
+    .url-container a {
+      word-break: break-all;
+      display: block;
+      margin-top: 5px;
+    }
+    .btn1
+    {
+      color:black;
+      font-size: 20px;
+    }
+    .white-box {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 25px;
+      border-radius: 5px;
+
+    }
+    .fa-copy{
+    color: black;
+    margin-top : -20px;
+    margin-left: 0px;
+    border-radius: 3px;
+    font-size: 22px;
+    float: right;
+  }
+  a 
+  {
+    color : black;
+    text-decoration : none;
+
+  }
+  .login-form img {
+  display: block;
+  margin: 0 auto;
+  /* max-width: 100%; */
+  width: 40vh;
+  height:40vh;
+}
+
+        </style>
+
+</head>
+<body>
+ 
+  <%= render "urlshortener/navbar" %>
+
+  <div class="container">
+
+    <div class="row">
+
+          <div class="col-md-8 col-sm-8">
+
+                <div class="login-form1">
+                    <% if @url.present? %>
+                        <div class="url-container">
+                            <label for="originalUrl">Original URL:</label>
+                            <br>
+                            <br>
+                                <div class="white-box" id="originalUrl"><%= @url.original_url %>
+                                </div>
+                                
+                        </div>
+
+                        <div class="url-container">
+                            <label for="shortUrl"><p style="color:#8eecf5;">Short URL:</p></label>
+                            <div class="white-box" id="shortUrl">
+                            <a href = <%= @url.shortened_url %> target="_blank" ><%= @url.shortened_url %> </a> <span><i class="fa fa-copy" type="button" onclick="copyText('<%= @url.shortened_url %>')"></i></span>
+                            </div>
+
+                        </div>
+
+                    <% else %>
+
+                        <p>No URLs found</p>
+
+                    <% end %>
+
+                    <br>
+                    <br>
+
+                     <div class="url-container">
+
+                        <input id ="btnclick"class="btn1 form-control" value="create New QR code" type="button">
+                    
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+
+            <div class="login-form">
+              <h5>
+              <%= image_tag "data:image/png;base64,#{Base64.strict_encode64(@png.to_s)}", alt: "QR Code"  %>
+              <br>
+              <div>
+                <h3><a href="data:image/png;base64,<%= Base64.encode64(@png.to_s) %>" download="qrcode.png"> <i style="color:cyan; font-size:30px; float:right;" class="fas fa-download"></i></a> </h3>
+              </div>
+              </h5>
+            </div>
+            
+
+        </div> 
+  </div> 
+  
+ 
+  
+  </div>
+  </div>
+
+
+<script>
+
+    document.getElementById('btnclick').addEventListener('click', function() {
+  window.location.href = "/qrcode"; 
+  });
+  
+  function copyText(shortenedUrl) {
+    var inputField = document.createElement("input");
+    document.body.appendChild(inputField);
+    inputField.setAttribute('value', shortenedUrl);
+    inputField.select();
+    document.execCommand('copy');
+    document.body.removeChild(inputField);
+    alert("Copied the text: " + shortenedUrl);
+  }
+
+  
+</script>
+</body>
+</html>
