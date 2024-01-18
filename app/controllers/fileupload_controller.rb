@@ -188,7 +188,7 @@ class FileuploadController < ApplicationController
 
   if errors
 
-    flash[:error] = ['All URLs must start with http:// or https://']
+    flash[:error] = 'All URLs must start with or https://'
     redirect_to '/qrcode'
 
   else
