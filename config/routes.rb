@@ -51,6 +51,9 @@ Rails.application.routes.draw do
   get '/download', to: 'urlshortener#download'
 
 
+  post '/delete' => 'urlshortener#delete'
+
+
   get '/upload_download', to: 'fileupload#csvfileupload_download'
   get 'generate_pdf_summary', to: 'downloads#generate_pdf_summary'
   get '/generate_User_summary', to: 'downloads#generate_User_summary'

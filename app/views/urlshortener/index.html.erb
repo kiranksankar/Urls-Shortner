@@ -145,8 +145,15 @@
 
             <td> <a href = <%= url.original_url %>  target="_blank"> <%= url.original_url %> </td>
 
-            <td > <a href= <%= url[:shortened_url] %>  target="_blank">    <p class="hoveers"><%= url[:shortened_url] %>     </p>    </a>   <span style="margin-left:20px;"><i class="fa fa-copy" class="btn-primary1" type="button"  onclick="copyText('<%= url[:shortened_url] %>')"></i> </span></td>
-          
+            <td > <a href= <%= url[:shortened_url] %>  target="_blank">    <p class="hoveers"><%= url[:shortened_url] %>     </p>    </a>   <span style="margin-left:20px;"><i class="fa fa-copy" class="btn-primary1" type="button"  onclick="copyText('<%= url[:shortened_url] %>')"></i> </span>
+            <span class="btn ">
+              <form action="/delete" method="POST">
+                <input type="text" style="display:none;" name ="url" value = <%= url.id %> >
+             <input type="submit" value ="Delete">
+                </form>
+              </span>
+            </td>
+            
 
           </tr>
         <% end %>
