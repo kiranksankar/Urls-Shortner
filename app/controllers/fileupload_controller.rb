@@ -140,7 +140,7 @@ class FileuploadController < ApplicationController
 
     def qrcode_generate
 
-      
+
 
       original_urls = params[:original_url]
 
@@ -176,7 +176,7 @@ class FileuploadController < ApplicationController
 
   if original_urls.present?
 
-    unless original_urls.start_with?('http://', 'https://')
+    unless original_urls.start_with?('http://', 'https://') && url[:original_url] =~ /\Ahttps:\/\/.+/
 
       errors = true
     end
