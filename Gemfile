@@ -52,7 +52,6 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem 'rspec-rails'
-
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
 end
@@ -85,3 +84,6 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 gem "rqrcode", "~> 2.0"
+
+
+gem 'simplecov', require: false, group: :test

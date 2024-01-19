@@ -62,10 +62,13 @@
 {
   float:right;
 }
-.delete{
-  color:white;
-  background-color:transparent;
-
+.delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.btn {
+  margin-left: 10px;
 }
   </style>
 </head>
@@ -155,7 +158,9 @@
               <form action="/delete" method="POST">
                 <input type="text" style="display:none;" name ="url" value = <%= url.id %> >
                  <button  class="delete">
-                    <i class="fa fa-trash"></i>
+                  
+                    <i class="fa fa-trash" style="font-size:20px;color:red"></i>
+
                  </button>
                 </form>
               </span>
