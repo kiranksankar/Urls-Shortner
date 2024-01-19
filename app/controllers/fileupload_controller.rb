@@ -176,7 +176,7 @@ class FileuploadController < ApplicationController
 
   if original_urls.present?
 
-    unless original_urls.start_with?('http://', 'https://') && url[:original_url] =~ /\Ahttps:\/\/.+/
+    unless original_urls.start_with?('http://', 'https://') && original_urls =~ /\Ahttps:\/\/.+/
 
       errors = true
     end
