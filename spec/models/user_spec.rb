@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
+
   it 'is valid with valid attributes' do
     user = User.new(username: 'testuser', email: 'test@example.com', password: 'Passw0rd')
     expect(user).to be_valid
@@ -33,6 +33,14 @@ end
     expect(user.save).to eq(true)
   end
 
+  describe '#generate_password_reset_token' do
+  it 'generates a password reset token and assigns it to a global variable' do
+    user = User.new
+    token = user.generate_password_reset_token
+    expect(token).to_not be_nil
+    expect(token).to_not be_empty
 
-
+    expect($global_password_reset_token).to eq(token)
+  end
+end
 end
