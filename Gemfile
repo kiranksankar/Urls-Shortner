@@ -87,3 +87,6 @@ gem "rqrcode", "~> 2.0"
 
 
 gem 'simplecov', require: false, group: :test
+
+
+gem 'sidekiq'

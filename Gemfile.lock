@@ -203,6 +203,8 @@ GEM
     rake (13.1.0)
     rdoc (6.6.0)
       psych (>= 4.0.0)
+    redis-client (0.19.1)
+      connection_pool
     reline (0.4.0)
       io-console (~> 0.5)
     rqrcode (2.2.0)
@@ -228,6 +230,11 @@ GEM
     rspec-support (3.12.1)
     ruby2_keywords (0.0.5)
     semantic_range (3.0.0)
+    sidekiq (7.2.1)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.19.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -294,6 +301,7 @@ DEPENDENCIES
   rails-controller-testing
   rqrcode (~> 2.0)
   rspec-rails
+  sidekiq
   simplecov
   sprockets-rails
   stimulus-rails
