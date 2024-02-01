@@ -130,7 +130,11 @@
   
    </center>   
    </div> %>
-
+<% if @url_file.invalid_urls.present? %>
+<div class="alert fade show" style="color:red;" >
+    <h2>Invalid Urls:<span style="color:white;"><%=@url_file.invalid_urls.join(",  ") %></span></h2>
+  </div>
+<% end %>
 
    
 

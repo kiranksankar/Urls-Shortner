@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :urls, dependent: :destroy
+  has_many :url_files
 
   has_secure_password
 

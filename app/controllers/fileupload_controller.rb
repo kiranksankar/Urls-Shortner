@@ -9,91 +9,123 @@ class FileuploadController < ApplicationController
 
   end
 
-  def create
-    $imported_urls = []
-    invalid_urls = []
-
-    if params[:url] && params[:url][:pdf_file].present?
-
-      uploaded_file = params[:url][:pdf_file].tempfile
-
-      begin
-
-        CSV.foreach(uploaded_file, headers: false) do |row|
-
-          original_url = row[0]&.to_s&.strip
-
-          next if original_url.blank?
-
-          unless original_url.start_with?('http://', 'https://') && original_url =~ /\Ahttps:\/\/.+/
-            invalid_urls << original_url
-            next
-          end
 
 
-          # unless original_url.start_with?('http://', 'https://')
-
-          #   flash[:error] = "Validation failed  '#{original_url}' must start with http:// or https://"
-
-          #   redirect_to '/upload' and return
-          # end
+    def create
 
 
-          shortened_url = generate_shortened_url(original_url)
+      if params[:url] && params[:url][:pdf_file].present?
+        uploaded_file = params[:url][:pdf_file]
 
-          # puts(original_url)
-          # puts(shortened_url)
+        if uploaded_file.content_type == 'text/csv' || File.extname(uploaded_file.original_filename).downcase == '.csv'
+          job_hash = SecureRandom.hex
+          file_name = uploaded_file.original_filename
 
-          # Url.create!(original_url: original_url, shortened_url: shortened_url)
+          url_file = current_user.url_files.new(pdf_file: uploaded_file, file_name: file_name, file_url: job_hash)
 
+          if url_file.save
+            ProcessCsvFileJob.perform_async(url_file.id, job_hash)
 
+            if url_file.invalid_urls.present?
 
-          new_url = current_user.urls.new(original_url: original_url, shortened_url: shortened_url)
+              flash[:errors] = 'Some URLs in the file are invalid. Please check the list of invalid URLs.'
 
-          # unless new_url.save
-          #     errors = true
-          # end
-          unless new_url.save
-            errors = true
-            # Flash the error messages
-            new_url.errors.full_messages.each do |error_message|
-              flash[:errors] ||= []
-              flash[:errors] << error_message
+              redirect_to upload_path
+            else
+              flash[:success] = 'CSV file upload queued for processing. Please refresh for loading the urls '
+
+              redirect_to fileshow_path(url_file_id: url_file.id, job_hash: job_hash)
+
             end
+          else
+            flash[:error] = 'Error saving the file information.'
+            redirect_to "/upload"
           end
-
-
-
-
-          $imported_urls << { original_url: original_url, shortened_url: shortened_url }
-
+        else
+          flash[:error] = 'Please upload a valid CSV file.'
+          redirect_to "/upload"
         end
-
-        if invalid_urls.any?
-          flash[:error] = "Validation failed for the following URLs: #{invalid_urls.join(', ')}. They must start with http:// or https://"
-          redirect_to fileshow_path and return
-          # redirect_to fileshow_path(imported_urls: @imported_urls) and return
-        end
-
-        flash[:success] = 'CSV file uploaded and URLs processed successfully.'
-        redirect_to fileshow_path and return
-        # redirect_to fileshow_path(imported_urls: @imported_urls) and return
-
-      rescue StandardError => e
-
-        flash[:error] = "Please upload a CSV file "
+      else
+        flash[:error] = 'Please select a CSV file to upload.'
         redirect_to "/upload"
       end
-
-    else
-
-      flash[:error] = 'Please select a CSV file to upload.'
-      redirect_to "/upload"
 
     end
 
 
-  end
+
+  # def create
+
+  #   $imported_urls = []
+
+  #   invalid_urls = []
+
+  #   if params[:url] && params[:url][:pdf_file].present?
+
+  #     uploaded_file = params[:url][:pdf_file].tempfile
+
+  #     begin
+
+  #       CSV.foreach(uploaded_file, headers: false) do |row|
+
+  #         original_url = row[0]&.to_s&.strip
+
+  #         next if original_url.blank?
+
+  #         unless original_url.start_with?('http://', 'https://') && original_url =~ /\Ahttps:\/\/.+/
+  #           invalid_urls << original_url
+  #           next
+  #         end
+
+
+
+
+  #         shortened_url = generate_shortened_url(original_url)
+
+
+  #         new_url = current_user.urls.new(original_url: original_url, shortened_url: shortened_url)
+
+  #         unless new_url.save
+  #           errors = true
+  #           # Flash the error messages
+  #           new_url.errors.full_messages.each do |error_message|
+  #             flash[:errors] ||= []
+  #             flash[:errors] << error_message
+  #           end
+  #         end
+
+
+
+
+  #         $imported_urls << { original_url: original_url, shortened_url: shortened_url }
+
+  #       end
+
+  #       if invalid_urls.any?
+  #         flash[:error] = "Validation failed for the following URLs: #{invalid_urls.join(', ')}. They must start with http:// or https://"
+  #         redirect_to fileshow_path and return
+  #         # redirect_to fileshow_path(imported_urls: @imported_urls) and return
+  #       end
+
+  #       flash[:success] = 'CSV file uploaded and URLs processed successfully.'
+  #       redirect_to fileshow_path and return
+  #       # redirect_to fileshow_path(imported_urls: @imported_urls) and return
+
+  #     rescue StandardError => e
+
+  #       flash[:error] = "Please upload a CSV file "
+  #       redirect_to "/upload"
+  #     end
+
+  #   else
+
+  #     flash[:error] = 'Please select a CSV file to upload.'
+  #     redirect_to "/upload"
+
+  #   end
+
+
+  # end
 
     def new
 
@@ -102,9 +134,37 @@ class FileuploadController < ApplicationController
     end
 
     def fileshow
+      url_file_id = params[:url_file_id]
+      job_hash = params[:job_hash]
 
-      @imported_urls = $imported_urls
 
+      puts"====================================="
+
+
+
+      puts url_file_id
+      puts job_hash
+
+      puts"====================================="
+
+      @url_file = UrlFile.find_by(id: url_file_id, file_url: job_hash)
+
+
+
+      puts "============================================"
+
+      puts @url_file.invalid_urls
+
+      puts "============================================"
+
+
+      # if @url_file
+        $imported_urls = @url_file.user.urls.where(short_code: job_hash)
+        @imported_urls = $imported_urls
+        # ... other necessary code
+      # else
+        # Handle the case where @url_file is not found
+      # end
     end
 
     def csvfileupload_download
@@ -240,25 +300,25 @@ end
 
 
 
-  private
+  # private
 
 
-  def generate_shortened_url(original_url)
+  # def generate_shortened_url(original_url)
 
-    random = SecureRandom.hex
-
-
-    combined = original_url + random
-
-      hash = Digest::MD5.hexdigest(combined)
-      "https://shorturl-oazb.onrender.com/#{hash[0, 7]}"
+  #   random = SecureRandom.hex
 
 
-    end
+  #   combined = original_url + random
 
-    def user_params
-      params.require(:url).permit(:original_url, :shortened_url)
-    end
+  #     hash = Digest::MD5.hexdigest(combined)
+  #     "https://shorturl-oazb.onrender.com/#{hash[0, 7]}"
+
+
+  #   end
+
+  #   def user_params
+  #     params.require(:url).permit(:original_url, :shortened_url)
+  #   end
 
 
 end

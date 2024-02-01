@@ -119,11 +119,11 @@ def redirect
 
   end
 
-  def userlist
+  # def userlist
 
-    @user = User.all
+  #   @user = User.all
 
-  end
+  # end
 
 
   def delete
@@ -146,7 +146,7 @@ def redirect
     else
 
       redirect_to urlslist_path, alert: 'URL not found.'
-      
+
     end
 
   end

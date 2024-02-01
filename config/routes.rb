@@ -25,14 +25,14 @@ Rails.application.routes.draw do
 
   get 'qrcodeshow' => 'fileupload#qrcodeshow'
 
-  
+
   get '/upload', to: 'fileupload#upload'
 
 
 
   get '/filesummary', to: 'fileupload#new'
 
-  get '/fileshow', to: 'fileupload#fileshow'
+  get '/fileshow/:url_file_id/:job_hash', to: 'fileupload#fileshow', as: 'fileshow'
 
   get '/new', to: 'urlshortener#new'
 
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   get '/urlslist', to: 'urlshortener#index'
 
-  get '/userlist', to: 'urlshortener#userlist'
+  # get '/userlist', to: 'urlshortener#userlist'
 
 
   get '/navbar1', to: 'home#navbar'
@@ -60,7 +60,7 @@ Rails.application.routes.draw do
 
   get '/upload_download', to: 'fileupload#csvfileupload_download'
   get 'generate_pdf_summary', to: 'downloads#generate_pdf_summary'
-  get '/generate_User_summary', to: 'downloads#generate_User_summary'
+  # get '/generate_User_summary', to: 'downloads#generate_User_summary'
 
 
 
